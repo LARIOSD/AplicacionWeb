@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <?php
+
+session_start();
 require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $usuario = leerUsuarios();
