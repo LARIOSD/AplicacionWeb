@@ -124,7 +124,7 @@ $usuario = leerUsuarios();
 
 
                     <div class="container">
-<!--
+                        <!--
                         <form action="../../controller/actions/act_Moduser.php" method="POST">
                             <h2 class="nombre_accion">Modificar Usuario</h2>
                             <div class="modificar">
@@ -180,14 +180,26 @@ $usuario = leerUsuarios();
                                                     <td> <?php echo $aux['id']; ?></td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['correo']; ?> </td>
-                                                    <td><a href="" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
-                                                            <i class="fas fa-user-edit"></i>
-                                                        </a>
+                                                    <td>
+                                                        <form action="" method="POST">
+                                                            <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
+                                                            <input type="hidden" name="nombre" value="<?php echo $aux['nombre']; ?>">
+                                                            <input type="hidden" name="correo" value="<?php echo $aux['correo']; ?>">
+
+                                                            <button href="" onclick="" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
+                                                                <i class="fas fa-user-edit"></i>
+                                                            </button>
+                                                        </form>
                                                     </td>
-                                                    <td><a href="" data-target="#eliminar_usuario" data-toggle="modal" class="btn btn-danger">
-                                                        <i class="fas fa-user-minus"></i>
-                                                    </a>
-                                                </td>
+                                                    <td>
+                                                        <form method="POST">
+                                                            <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
+
+                                                            <button type="button" href="" data-target="#eliminar_usuario" data-toggle="modal" class="btn btn-danger">
+                                                                <i class="fas fa-user-minus"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -248,19 +260,28 @@ $usuario = leerUsuarios();
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                                <i class="fas fa-user prefix grey-text"></i>
-                                <input type="text" name="nombre" id="orangeForm-name" class="form-control validate" placeholder="User Name">
-                            </div>
-                            <div class="md-form mb-5">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" name="correo" id="orangeForm-email" class="form-control validate" placeholder="Email">
-                            </div>
+                        <div class="modal-body mx-3" style="text-align:center">
 
-                            <div class="md-form mb-4">
-                                <i class="fas fa-lock prefix grey-text"></i>
-                                <input type="password" name="password" id="orangeForm-pass" class="form-control validate" placeholder="Password">
+                            <!--Nombre-->
+                            <div class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
+                            </div>
+                            <!--Correo-->
+                            <div class="btn btn-primary btn-icon-split" style="margin: 10px">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                </span>
+                                <input type="email" name="correo" class="form-control validate" placeholder="Email">
+                            </div>
+                            <!--Password-->
+                            <div class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control validate" placeholder="Password">
                             </div>
 
                         </div>
@@ -284,21 +305,32 @@ $usuario = leerUsuarios();
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                                <i class="fas fa-user prefix grey-text"></i>
-                                <input type="text" name="nombre" id="orangeForm-name" class="form-control validate" placeholder="User Name">
-                            </div>
-                            <div class="md-form mb-5">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" name="correo" id="orangeForm-email" class="form-control validate" placeholder="Email">
-                            </div>
+                        <div class="modal-body mx-3" style="text-align:center">
 
-                            <div class="md-form mb-4">
-                                <i class="fas fa-lock prefix grey-text"></i>
-                                <input type="password" name="password" id="orangeForm-pass" class="form-control validate" placeholder="Password">
-                            </div>
+                            <!--Id-->
+                            <input type="hidden" name="id">
 
+                            <!--Nombre-->
+                            <div class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="nombre" class="form-control validate" value="<?php echo $aux['nombre']; ?>" placeholder="Nombre">
+                            </div>
+                            <!--Correo-->
+                            <div class="btn btn-primary btn-icon-split" style="margin: 10px">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                </span>
+                                <input type="email" name="correo" class="form-control validate" placeholder="Email">
+                            </div>
+                            <!--Password-->
+                            <div class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control validate" placeholder="Password">
+                            </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button form="modificar" type="submit" value="Enviar" class="btn btn-primary">Modificar</button>
@@ -321,10 +353,9 @@ $usuario = leerUsuarios();
                             </button>
                         </div>
                         <div class="modal-body">Selecciono eliminar. ¿ Esta seguro de eliminar este usuario ?</div>
-                        <?php echo $aux['id']; ?>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <input form="eliminar" type="submit" value="<?php $aux['id']; ?>" class="btn btn-danger" href=""> <i class="fas fa-trash"></i>
+                            <button form="eliminar" type="submit" class="btn btn-danger" href=""> <i class="fas fa-trash"></i> </button>
                         </div>
                     </form>
                 </div>

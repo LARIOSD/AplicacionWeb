@@ -2,8 +2,8 @@
 
 <?php
 require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../Model/entities/Usuario.php");
-$usuario = leerUsuarios();
+//require_once(__DIR__ . "/../../Model/entities/producto.php");
+$producto = leerUsuarios();
 ?>
 
 <html lang="en">
@@ -124,9 +124,9 @@ $usuario = leerUsuarios();
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h4 class="m-0 font-weight-bold text-primary">Tabla de productos</h4>
-                                <!--Boton crear usuario -->
+                                <!--Boton crear producto -->
                                 <div class="text-right">
-                                    <a href=""  class="btn btn-success" data-toggle="modal" data-target="#Crear_usuario" >
+                                    <a href=""  class="btn btn-success" data-toggle="modal" data-target="#agregar_producto" >
                                     <i class="fas fa-plus-circle"></i>
                                     </a>
                                 </div>
@@ -172,15 +172,15 @@ $usuario = leerUsuarios();
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <?php foreach ($usuario as $aux) : ?>
+                                            <?php foreach ($producto as $aux) : ?>
                                                 <tr>
                                                     <td> <?php echo $aux['id']; ?></td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['correo']; ?> </td>
                                                     <td>   </td>
                                                     <td>   </td>
-                                                    <td><a href="" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> </a></td>
-                                                    <td><a href="" data-target="#eliminar_usuario" data-toggle="modal" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                                                    <td><a href="" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> </a></td>
+                                                    <td><a href="" data-target="#eliminar_producto" data-toggle="modal" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -216,13 +216,13 @@ $usuario = leerUsuarios();
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!--Crear usuario modal-->
-        <div class="modal fade" id="Crear_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--Crear producto modal-->
+        <div class="modal fade" id="agregar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Crear Usuario</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">Agregar producto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -250,15 +250,15 @@ $usuario = leerUsuarios();
                 </form>
             </div>
         </div>
-        <!--fin crear usuario modal-->
+        <!--fin crear producto modal-->
 
-        <!--Modificar usuario modal-->
-        <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--Modificar producto modal-->
+        <div class="modal fade" id="modificar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/act_Moduser.php" method="POST">
+                <form id="modificar" action="../../controller/actions/act_Moduser.php " method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -286,10 +286,10 @@ $usuario = leerUsuarios();
                 </form>
             </div>
         </div>
-        <!--fin Modificar usuario modal -->
+        <!--fin Modificar producto modal -->
 
         <!-- Delete Modal-->
-        <div class="modal fade" id="eliminar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="eliminar_producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form id="eliminar" action="../../controller/actions/act_Elimuser.php" method="POST">
@@ -299,11 +299,10 @@ $usuario = leerUsuarios();
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">Selecciono eliminar. ¿ Esta seguro de eliminar este usuario ?</div>
-                        <?php echo $aux['id']; ?>
+                        <div class="modal-body">Selecciono eliminar. ¿ Esta seguro de eliminar este Producto ?</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <input form="eliminar" type="submit" value="<?php $aux['id']; ?>" class="btn btn-danger" href=""> <i class="fas fa-trash"></i>
+                            <button form="eliminar" type="submit" class="btn btn-danger" href=""> <i class="fas fa-trash"></i> </button>
                         </div>
                     </form>
                 </div>
