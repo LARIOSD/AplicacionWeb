@@ -34,11 +34,11 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user"  action="../../controller/actions/act_register.php" method="POST">
+              <form class="user" action="../controller/actions/act_register.php" method="POST">
                 <div class="form-group">
                   <!--<div class="col-sm-6 mb-3 mb-sm-0">-->
-                    <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name">
-                  </div>  
+                  <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name">
+                </div>
                 <div class="form-group">
                   <input type="email" class="form-control form-control-user" name="correo" id="exampleInputEmail" placeholder="Email Address">
                 </div>
@@ -46,13 +46,14 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
                   </div>
-                  <div class="col-sm-6">
+                  <!-- --><div class="col-sm-6">
                     <input type="password" class="form-control form-control-user" name="confirm_password" id="exampleRepeatPassword" placeholder="Repeat Password">
                   </div>
+
                 </div>
-                <a href="" type="submit" class="btn btn-primary btn-user btn-block" value="send" >
+                <button href="" type="submit" class="btn btn-primary btn-user btn-block" value="send">
                   Register Account
-                </a>
+                </button>
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google

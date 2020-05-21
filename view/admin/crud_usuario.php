@@ -5,7 +5,7 @@
 session_start();
 require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
-require_once(__DIR__ . "/../../Model/dao/DataSource.php");
+//require_once(__DIR__ . "/../../Model/dao/DataSource.php");
 
 $usuario = leerUsuarios();
 ?>
@@ -130,7 +130,7 @@ $usuario = leerUsuarios();
                     <div class="container">
                         <!--
                         <form action="../../controller/actions/act_Moduser.php" method="POST">
-                            <h2 class="nombre_accion">Modificar resu$resultado</h2>
+                            <h2 class="nombre_accion">Modificar Usuario</h2>
                             <div class="modificar">
                                 <input type="text" name="id" class="form-control" placeholder="id" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">
@@ -141,7 +141,7 @@ $usuario = leerUsuarios();
                         </form>
 
                         <form action="../../controller/actions/act_Elimuser.php" method="POST">
-                            <h2 class="nombre_accion">Eliminar resu$resultado</h2>
+                            <h2 class="nombre_accion">Eliminar Usuario</h2>
                             <div class="eliminar">
                                 <input type="text" name="id" class="form-control" placeholder="id" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 <button type="submit" value="Enviar" class="btn btn-danger">Eliminar</button>
@@ -153,7 +153,7 @@ $usuario = leerUsuarios();
                             <div class="card-header py-3">
                                 <h4 class="m-0 font-weight-bold text-primary">Tabla de usuarios</h4>
 
-                                <!--Boton crear resu$resultado -->
+                                <!--Boton crear Usuario -->
                                 <div class="text-right">
                                     <a href="" class="btn btn-success" data-toggle="modal" data-target="#Crear_usuario">
                                         <i class="fas fa-user-plus"></i>
@@ -179,33 +179,27 @@ $usuario = leerUsuarios();
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php while( $resultado = $usuario->mysqli_fetch_assoc($usuario)): //foreach ($resultado as $resultado) :  ?>
+                                            <?php foreach ($usuario as $aux) :  ?>
                                                 <tr>
-                                                    <td> <?php echo $resultado['id']; ?></td>
-                                                    <td> <?php echo $resultado['nombre']; ?> </td>
-                                                    <td> <?php echo $resultado['correo']; ?> </td>
+                                                    <td> <?php echo $aux['id']; ?></td>
+                                                    <td> <?php echo $aux['nombre']; ?> </td>
+                                                    <td> <?php echo $aux['correo']; ?> </td>
                                                     <td>
-                                                        <form action="" method="POST">
-                                                            <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
-                                                            <input type="hidden" name="nombre" value="<?php echo $resultado['nombre']; ?>">
-                                                            <input type="hidden" name="correo" value="<?php echo $resultado['correo']; ?>">
-
-                                                            <button href="" onclick="" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
-                                                                <i class="fas fa-user-edit"></i>
-                                                            </button>
+                                                        <button href="" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
+                                                            <i class="fas fa-user-edit"></i>
+                                                        </button>
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form method="POST">
-                                                            <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
-
-                                                            <button type="button" href="" data-target="#eliminar_usuario" data-toggle="modal" class="btn btn-danger">
+                                                        <form action="../../controller/actions/act_Elimuser.php" method="POST">
+                                                            <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
+                                                            <button type="submit" href="" class="btn btn-danger">
                                                                 <i class="fas fa-user-minus"></i>
                                                             </button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            <?php endwhile; //ndforeach; ?>
+                                            <?php endforeach; ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -253,13 +247,13 @@ $usuario = leerUsuarios();
             <i class="fas fa-angle-up"></i>
         </a>
 
-        <!--Crear resu$resultado modal-->
+        <!--Crear Usuario modal-->
         <div class="modal fade" id="Crear_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Crear resu$resultado</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">Crear Usuario</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -267,21 +261,21 @@ $usuario = leerUsuarios();
                         <div class="modal-body mx-3" style="text-align:center">
 
                             <!--Nombre-->
-                            <div class="btn btn-primary btn-icon-split">
+                            <div class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-user"></i>
                                 </span>
                                 <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
                             </div>
                             <!--Correo-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 10px">
+                            <div class="btn btn-success btn-icon-split" style="margin: 10px">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                 </span>
                                 <input type="email" name="correo" class="form-control validate" placeholder="Email">
                             </div>
                             <!--Password-->
-                            <div class="btn btn-primary btn-icon-split">
+                            <div class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -296,15 +290,15 @@ $usuario = leerUsuarios();
                 </form>
             </div>
         </div>
-        <!--fin crear resu$resultado modal-->
+        <!--fin crear Usuario modal-->
 
-        <!--Modificar resu$resultado modal-->
+        <!--Modificar Usuario modal-->
         <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <form id="modificar" action="../../controller/actions/act_Moduser.php" method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Modificar resu$resultado</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -312,24 +306,31 @@ $usuario = leerUsuarios();
                         <div class="modal-body mx-3" style="text-align:center">
 
                             <!--Id-->
-                            <input type="hidden" name="id">
+                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-fingerprint"></i>
+                                </span>
+                                <input type="text" name="id" class="form-control validate" placeholder="ID">
+                            </div>
 
-                            <!--Nombre-->
-                            <div class="btn btn-primary btn-icon-split">
+                            <!-- Nombre-->
+                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-user"></i>
                                 </span>
-                                <input type="text" name="nombre" class="form-control validate" value="<?php echo $resultado['nombre']; ?>" placeholder="Nombre">
+                                <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
                             </div>
+
                             <!--Correo-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 10px">
+                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                 </span>
                                 <input type="email" name="correo" class="form-control validate" placeholder="Email">
                             </div>
+
                             <!--Password-->
-                            <div class="btn btn-primary btn-icon-split">
+                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -343,10 +344,10 @@ $usuario = leerUsuarios();
                 </form>
             </div>
         </div>
-        <!--fin Modificar resu$resultado modal -->
+        <!--fin Modificar Usuario modal -->
 
-        <!-- Delete Modal-->
-        <div class="modal fade" id="eliminar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <!-- Delete Modal
+          <div class="modal fade" id="eliminar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form id="eliminar" action="../../controller/actions/act_Elimuser.php" method="POST">
@@ -365,6 +366,8 @@ $usuario = leerUsuarios();
                 </div>
             </div>
         </div>
+        -->
+
 
 
 
