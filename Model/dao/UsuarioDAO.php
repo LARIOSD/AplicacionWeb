@@ -6,23 +6,30 @@ require_once(__DIR__ . "/../entities/Usuario.php");
 class UsuarioDAO
 {
 
-    public function autenticarUsuario($user, $pass){
+    public function autenticarUsuario($user, $pass)
+    {
         $data_source = new DataSource();
-     
-        $data_table= $data_source->ejecutarConsulta("SELECT * FROM usuario WHERE correo = :user AND password = :pass", 
-                                                    array(':user'=>$user,':pass'=>$pass));
-        $usuario=null;
-        if(count($data_table)==1){
-            foreach($data_table as $indice => $valor){
+
+        $data_table = $data_source->ejecutarConsulta(
+            "SELECT * FROM usuario WHERE correo = :user AND password = :pass",
+            array(':user' => $user, ':pass' => $pass)
+        );
+        $usuario = null;
+        if (count($data_table) == 1) {
+            foreach ($data_table as $indice => $valor) {
                 $usuario = new Usuario(
-                        $data_table[$indice]["id"],
-                        $data_table[$indice]["nombre"],
-                        $data_table[$indice]["correo"],
-                        $data_table[$indice]["password"],
-                        );
+                    $data_table[$indice]["id"],
+                    $data_table[$indice]["nombre"],
+                    $data_table[$indice]["correo"],
+                    $data_table[$indice]["password"],
+                    $data_table[$indice]["image"],
+                    $data_table[$indice]["tipo"],
+                    $data_table[$indice]["telefono"],
+                    $data_table[$indice]["direccion"],
+                );
             }
             return $usuario;
-        }else{
+        } else {
             return null;
         }
     }
@@ -41,9 +48,12 @@ class UsuarioDAO
                 $usuario = new Usuario(
                     $data_table[$indice]["id"],
                     $data_table[$indice]["nombre"],
-                    $data_table[$indice]["apellido"],
                     $data_table[$indice]["correo"],
                     $data_table[$indice]["password"],
+                    $data_table[$indice]["image"],
+                    $data_table[$indice]["tipo"],
+                    $data_table[$indice]["telefono"],
+                    $data_table[$indice]["direccion"],
                 );
             }
             return $usuario;
@@ -64,6 +74,10 @@ class UsuarioDAO
                 $data_table[$indice]["nombre"],
                 $data_table[$indice]["correo"],
                 $data_table[$indice]["password"],
+                $data_table[$indice]["image"],
+                $data_table[$indice]["tipo"],
+                $data_table[$indice]["telefono"],
+                $data_table[$indice]["direccion"],
             );
             array_push($usuarios, $usuario);
         }
@@ -73,14 +87,19 @@ class UsuarioDAO
     public function insertarUsuario(Usuario $usuario)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO usuario VALUES (:id, :nombre, :correo, :password)";
+        $sql = "INSERT INTO usuario VALUES (:id, :nombre, :correo, :password, :image, :tipo, :telefono, :direccion )";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':id' => $usuario->getId(),
                 ':nombre' => $usuario->getNombre(),
                 ':correo' => $usuario->getUsername(),
-                ':password' => $usuario->getPassword()
+                ':password' => $usuario->getPassword(),
+                ':image' => $usuario->getImage(),
+                ':tipo' => $usuario->getTipo(),
+                ':telefono' => $usuario->getTelefono(),
+                ':direccion' => $usuario->getDireccion()
+
             )
         );
 
@@ -91,14 +110,19 @@ class UsuarioDAO
     public function modificarUsuario(Usuario $usuario, $id)
     {
         $data_source = new DataSource();
-        $sql = "UPDATE usuario SET nombre= :nombre, correo= :correo, password= :password where id = $id";
+        $sql = "UPDATE usuario SET nombre= :nombre, correo= :correo, password= :password, image= :image, 
+        tipo= :tipo, telefono= :telefono, direccion= :direccion where id = $id";
 
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':nombre' => $usuario->getNombre(),
                 ':correo' => $usuario->getUsername(),
-                ':password' => $usuario->getPassword()
+                ':password' => $usuario->getPassword(),
+                ':image' => $usuario->getImage(),
+                ':tipo' => $usuario->getTipo(),
+                ':telefono' => $usuario->getTelefono(),
+                ':direccion' => $usuario->getDireccion()
             )
         );
 

@@ -185,7 +185,7 @@ $usuario = leerUsuarios();
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['correo']; ?> </td>
                                                     <td>
-                                                        <button href="" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
+                                                        <button href="" id="modificarUser" pasarId="<?php echo $aux['id'];?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
                                                             <i class="fas fa-user-edit"></i>
                                                         </button>
                                                         </form>
@@ -193,7 +193,7 @@ $usuario = leerUsuarios();
                                                     <td>
                                                         <form action="../../controller/actions/act_Elimuser.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
-                                                            <button type="submit" href="" class="btn btn-danger">
+                                                            <button id="eliminarUser" type="submit" href="" class="btn btn-danger">
                                                                 <i class="fas fa-user-minus"></i>
                                                             </button>
                                                         </form>
@@ -281,7 +281,6 @@ $usuario = leerUsuarios();
                                 </span>
                                 <input type="password" name="password" class="form-control validate" placeholder="Password">
                             </div>
-
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button form="crear" type="submit" value="Enviar" class="btn btn-success">Crear</button>
@@ -310,7 +309,7 @@ $usuario = leerUsuarios();
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input type="text" name="id" class="form-control validate" placeholder="ID">
+                                <input type="text" name="id" class="form-control validate"   placeholder="ID">
                             </div>
 
                             <!-- Nombre-->
@@ -346,7 +345,7 @@ $usuario = leerUsuarios();
         </div>
         <!--fin Modificar Usuario modal -->
 
-         <!-- Delete Modal
+        <!-- Delete Modal
           <div class="modal fade" id="eliminar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -406,6 +405,8 @@ $usuario = leerUsuarios();
         <!-- Page level custom scripts -->
         <script src="../plantilla/js/demo/chart-area-demo.js"></script>
         <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
+
+        <script src="alert.js" ></script>
 
 </body>
 
