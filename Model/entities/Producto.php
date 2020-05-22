@@ -10,9 +10,9 @@ class Producto
     private $precio_producto;
     private $cantidad_producto;
     private $imagen_producto;
-    private $idtió_producto;
+    private $idtipo_producto;
 
-    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto, $tipo_producto, $descripcion_producto, $cantidad_producto, $imagen_producto, $idtió_producto)
+    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto, $tipo_producto, $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
     {
         $this->id = $id;
         $this->nombre_producto = $nombre_producto;
@@ -22,7 +22,7 @@ class Producto
         $this->descripcion_producto = $descripcion_producto;
         $this->cantidad_producto = $cantidad_producto;
         $this->imagen_producto = $imagen_producto;
-        $this->idtió_producto = $idtió_producto;
+        $this->idtipo_producto = $idtipo_producto;
     }
 
 
@@ -138,18 +138,18 @@ class Producto
         return $this;
     }
 
-    public function getIdtió_producto()
+    public function getIdtipo_producto()
     {
-        return $this->idtió_producto;
+        return $this->idtipo_producto;
     }
 
-    public function setIdtió_producto($idtió_producto)
+    public function setIdtipo_producto($idtipo_producto)
     {
-        $this->idtió_producto = $idtió_producto;
+        $this->idtipo_producto = $idtipo_producto;
 
         return $this;
     }
-    
+
 
     public function toArray()
     {

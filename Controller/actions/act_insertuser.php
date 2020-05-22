@@ -6,6 +6,10 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
+$image = $_POST['image'];
+$tipo = $_POST['tipo'];
+$telefono = $_POST['telefono'];
+$direccion = $_POST['direccion'];
 
 
 $usuario = new Usuario(
@@ -13,6 +17,11 @@ $usuario = new Usuario(
         $nombre,
         $username,
         $password,
+        $image,
+        $tipo,
+        $telefono,
+        $direccion,
+
     );
 
 $respuesta = insertarUsuario($usuario);

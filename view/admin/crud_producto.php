@@ -2,7 +2,7 @@
 session_start();
 
 
-require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
+require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
 //require_once(__DIR__ . "/../../Model/entities/producto.php");
 $producto = leerUsuarios();
 ?>
@@ -121,6 +121,22 @@ $producto = leerUsuarios();
 
 
                     <div class="container">
+
+                    <form action="../../controller/actions/act_insertprod.php" enctype="multipart/form-data" method="POST">
+                            <h2 class="nombre_accion">Agregar Producto</h2>
+                            <div class="agregar">
+                                <input type="text" name="nombre_producto" class="form-control" placeholder="Nombre">
+                                <input type="email" name="tipo_producto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                <input type="password" name="estado_producto" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="text" name="descripcion_producto" class="form-control" placeholder="image">
+                                <input type="text" name="precio_producto" class="form-control" placeholder="tipo">
+                                <input type="text" name="cantidad_producto" class="form-control" placeholder="telefono">
+                                <input type="text" name="image_producto" class="form-control" placeholder="direccion">
+                                <input type="text" name="idtipo_producto" class="form-control" placeholder="direccion">
+
+                                <button type="submit" value="Enviar" class="btn btn-success">Agregar</button>
+                            </div>
+                        </form>
 
                         <!--Tabla de productos-->
                         <div class="card shadow mb-4">

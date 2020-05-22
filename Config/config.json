@@ -2,5 +2,5 @@
     "host" : "localhost",
     "username" : "root",
     "password" : "",
-    "database" : "proyecto_web"
+    "database" : "tienda_web"
 }   

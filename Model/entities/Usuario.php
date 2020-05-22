@@ -4,18 +4,18 @@ class Usuario
 {
     private $id;
     private $nombre;
-    private $username;
+    private $correo;
     private $password;
     private $image;
     private $tipo;
     private $telefono;
     private $direccion;
 
-    public function __construct($id, $nombre, $username, $password, $image, $tipo, $telefono, $direccion)
+    public function __construct($id, $nombre, $correo, $password, $image, $tipo, $telefono, $direccion)
     {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->username = $username;
+        $this->correo = $correo;
         $this->password = $password;
         $this->image = $image;
         $this->tipo = $tipo;
@@ -48,14 +48,14 @@ class Usuario
     }
 
 
-    public function getUsername()
+    public function getCorreo()
     {
-        return $this->username;
+        return $this->correo;
     }
 
-    public function setUsername($username)
+    public function setCorreo($correo)
     {
-        $this->username = $username;
+        $this->correo = $correo;
 
         return $this;
     }

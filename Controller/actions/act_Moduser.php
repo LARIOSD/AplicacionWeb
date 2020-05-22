@@ -3,16 +3,25 @@
 require_once (__DIR__."/../mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 
+$id = $_POST['id'];
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
-$id = $_POST['id'];
+$image = $_POST['image'];
+$tipo = $_POST['tipo'];
+$telefono = $_POST['telefono'];
+$direccion = $_POST['direccion'];
+
 
 $usuario = new Usuario(
         null,
         $nombre,
         $username,
         $password,
+        $image,
+        $tipo,
+        $telefono,
+        $direccion,
     );
 
 $respuesta = modificarUsuario($usuario,$id);

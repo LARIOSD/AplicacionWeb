@@ -6,6 +6,10 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
+$image = $_POST['image'];
+$tipo = $_POST['tipo'];
+$telefono = $_POST['telefono'];
+$direccion = $_POST['direccion'];
 
 
 if (!empty($_POST['correo']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
@@ -16,6 +20,10 @@ if (!empty($_POST['correo']) && !empty($_POST['password']) && !empty($_POST['con
             $nombre,
             $username,
             $password,
+            null,
+            $tipo,
+            $telefono,
+            $direccion,
         );
 
         $respuesta = insertarUsuario($usuario);

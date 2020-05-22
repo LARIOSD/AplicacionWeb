@@ -128,7 +128,20 @@ $usuario = leerUsuarios();
 
 
                     <div class="container">
-                        <!--
+                    <form action="../../controller/actions/act_insertuser.php" enctype="multipart/form-data" method="POST">
+                            <h2 class="nombre_accion">Agregar Usuario</h2>
+                            <div class="agregar">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                                <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="file" accept="image/*" name="image" class="form-control" placeholder="image">
+                                <input type="text" name="tipo" class="form-control" placeholder="tipo">
+                                <input type="text" name="telefono" class="form-control" placeholder="telefono">
+                                <input type="text" name="direccion" class="form-control" placeholder="direccion">
+                                <button type="submit" value="Enviar" class="btn btn-success">Agregar</button>
+                            </div>
+                        </form>
+                        
                         <form action="../../controller/actions/act_Moduser.php" method="POST">
                             <h2 class="nombre_accion">Modificar Usuario</h2>
                             <div class="modificar">
@@ -147,7 +160,7 @@ $usuario = leerUsuarios();
                                 <button type="submit" value="Enviar" class="btn btn-danger">Eliminar</button>
                             </div>
                         </form>
--->
+
                         <!--Tabla de usuarios-->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -201,20 +214,6 @@ $usuario = leerUsuarios();
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID
-                                                </th>
-                                                <th>Name
-                                                </th>
-                                                <th>Email
-                                                </th>
-                                                <th>Edit
-                                                </th>
-                                                <th>Delete
-                                                </th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>

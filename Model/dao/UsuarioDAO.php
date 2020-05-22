@@ -11,7 +11,7 @@ class UsuarioDAO
         $data_source = new DataSource();
 
         $data_table = $data_source->ejecutarConsulta(
-            "SELECT * FROM usuario WHERE correo = :user AND password = :pass",
+            "SELECT * FROM users WHERE correo = :user AND password = :pass",
             array(':user' => $user, ':pass' => $pass)
         );
         $usuario = null;
@@ -39,7 +39,7 @@ class UsuarioDAO
         $data_source = new DataSource();
         //password_hash("rasmuslerdorf", PASSWORD_DEFAULT)
         $data_table = $data_source->ejecutarConsulta(
-            "SELECT * FROM usuario WHERE id = :id",
+            "SELECT * FROM users WHERE id = :id",
             array(':id' => $id)
         );
         $usuario = null;
@@ -65,7 +65,7 @@ class UsuarioDAO
     public function leerUsuarios()
     {
         $data_source = new DataSource();
-        $data_table = $data_source->ejecutarConsulta("SELECT * FROM usuario");
+        $data_table = $data_source->ejecutarConsulta("SELECT * FROM users");
         $usuario = null;
         $usuarios = array();
         foreach ($data_table as $indice => $valor) {
@@ -87,13 +87,13 @@ class UsuarioDAO
     public function insertarUsuario(Usuario $usuario)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO usuario VALUES (:id, :nombre, :correo, :password, :image, :tipo, :telefono, :direccion )";
+        $sql = "INSERT INTO users VALUES (:id, :nombre, :correo, :password, :image, :tipo, :telefono, :direccion )";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':id' => $usuario->getId(),
                 ':nombre' => $usuario->getNombre(),
-                ':correo' => $usuario->getUsername(),
+                ':correo' => $usuario->getCorreo(),
                 ':password' => $usuario->getPassword(),
                 ':image' => $usuario->getImage(),
                 ':tipo' => $usuario->getTipo(),
@@ -110,14 +110,14 @@ class UsuarioDAO
     public function modificarUsuario(Usuario $usuario, $id)
     {
         $data_source = new DataSource();
-        $sql = "UPDATE usuario SET nombre= :nombre, correo= :correo, password= :password, image= :image, 
+        $sql = "UPDATE users SET nombre= :nombre, correo= :correo, password= :password, image= :image, 
         tipo= :tipo, telefono= :telefono, direccion= :direccion where id = $id";
 
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':nombre' => $usuario->getNombre(),
-                ':correo' => $usuario->getUsername(),
+                ':correo' => $usuario->getCorreo(),
                 ':password' => $usuario->getPassword(),
                 ':image' => $usuario->getImage(),
                 ':tipo' => $usuario->getTipo(),
@@ -133,7 +133,7 @@ class UsuarioDAO
     {
         $data_source = new DataSource();
         $usuario =  buscarUsuarioPorId($id);
-        $resultado = $data_source->ejecutarActualizacion("DELETE FROM usuario WHERE id = :id", array('id' => $id));
+        $resultado = $data_source->ejecutarActualizacion("DELETE FROM users WHERE id = :id", array('id' => $id));
 
         return $resultado;
     }
