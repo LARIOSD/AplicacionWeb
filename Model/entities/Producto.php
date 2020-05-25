@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Producto
 {
@@ -12,7 +12,8 @@ class Producto
     private $imagen_producto;
     private $idtipo_producto;
 
-    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto, $tipo_producto, $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
+    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto, 
+    $tipo_producto, $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
     {
         $this->id = $id;
         $this->nombre_producto = $nombre_producto;

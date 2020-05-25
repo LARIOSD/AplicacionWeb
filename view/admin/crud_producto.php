@@ -3,8 +3,8 @@ session_start();
 
 
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
-//require_once(__DIR__ . "/../../Model/entities/producto.php");
-$producto = leerUsuarios();
+require_once(__DIR__ . "/../../Model/entities/producto.php");
+$producto = leerProducto();
 ?>
 
 <!DOCTYPE html>

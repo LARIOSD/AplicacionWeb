@@ -6,10 +6,15 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
-$image = $_POST['image'];
 $tipo = $_POST['tipo'];
-$telefono = $_POST['telefono'];
+$telefono = $_POST['telefono']; 
 $direccion = $_POST['direccion'];
+if (isset($_FILES["Imagen"]) && $_FILES["Imagen"]=="TRUE"){
+    echo "ok";
+}
+    
+
+
 
 
 $usuario = new Usuario(
@@ -17,7 +22,7 @@ $usuario = new Usuario(
         $nombre,
         $username,
         $password,
-        $image,
+        $imagen,
         $tipo,
         $telefono,
         $direccion,
@@ -26,9 +31,9 @@ $usuario = new Usuario(
 
 $respuesta = insertarUsuario($usuario);
 if($respuesta!=null){
-    header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
+ //   header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
-    header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+   // header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

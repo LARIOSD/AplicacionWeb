@@ -128,19 +128,7 @@ $usuario = leerUsuarios();
 
 
                     <div class="container">
-                    <form action="../../controller/actions/act_insertuser.php" enctype="multipart/form-data" method="POST">
-                            <h2 class="nombre_accion">Agregar Usuario</h2>
-                            <div class="agregar">
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                                <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                <input type="file" accept="image/*" name="image" class="form-control" placeholder="image">
-                                <input type="text" name="tipo" class="form-control" placeholder="tipo">
-                                <input type="text" name="telefono" class="form-control" placeholder="telefono">
-                                <input type="text" name="direccion" class="form-control" placeholder="direccion">
-                                <button type="submit" value="Enviar" class="btn btn-success">Agregar</button>
-                            </div>
-                        </form>
+
                         
                         <form action="../../controller/actions/act_Moduser.php" method="POST">
                             <h2 class="nombre_accion">Modificar Usuario</h2>
@@ -266,6 +254,8 @@ $usuario = leerUsuarios();
                                 </span>
                                 <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
                             </div>
+
+                            <input type="file" name="Imagen" require>
                             <!--Correo-->
                             <div class="btn btn-success btn-icon-split" style="margin: 10px">
                                 <span class="icon text-white-50">
@@ -273,6 +263,31 @@ $usuario = leerUsuarios();
                                 </span>
                                 <input type="email" name="correo" class="form-control validate" placeholder="Email">
                             </div>
+
+                            <!--Nombre-->
+                            <div class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="telefono" class="form-control validate" placeholder="Telefono">
+                            </div>
+
+                            <!--Nombre-->
+                            <div class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="direccion" class="form-control validate" placeholder="Dirección">
+                            </div>
+
+                            <!--Nombre-->
+                            <div class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="tipo" class="form-control validate" placeholder="tipo">
+                            </div>
+
                             <!--Password-->
                             <div class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -280,6 +295,8 @@ $usuario = leerUsuarios();
                                 </span>
                                 <input type="password" name="password" class="form-control validate" placeholder="Password">
                             </div>
+                                
+                                                
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button form="crear" type="submit" value="Enviar" class="btn btn-success">Crear</button>

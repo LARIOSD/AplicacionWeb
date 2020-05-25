@@ -6,18 +6,18 @@ class Usuario
     private $nombre;
     private $correo;
     private $password;
-    private $image;
+    private $imagen;
     private $tipo;
     private $telefono;
     private $direccion;
 
-    public function __construct($id, $nombre, $correo, $password, $image, $tipo, $telefono, $direccion)
+    public function __construct($id, $nombre, $correo, $password, $imagen, $tipo, $telefono, $direccion)
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->correo = $correo;
         $this->password = $password;
-        $this->image = $image;
+        $this->imagen = $imagen;
         $this->tipo = $tipo;
         $this->telefono = $telefono;
         $this->direccion = $direccion;
@@ -75,12 +75,12 @@ class Usuario
 
     public function getImage()
     {
-        return $this->image;
+        return $this->imagen;
     }
 
-    public function setImage($image)
+    public function setImage($imagen)
     {
-        $this->image = $image;
+        $this->imagen = $imagen;
 
         return $this;
     }

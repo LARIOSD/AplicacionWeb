@@ -22,7 +22,7 @@ class UsuarioDAO
                     $data_table[$indice]["nombre"],
                     $data_table[$indice]["correo"],
                     $data_table[$indice]["password"],
-                    $data_table[$indice]["image"],
+                    $data_table[$indice]["imagen"],
                     $data_table[$indice]["tipo"],
                     $data_table[$indice]["telefono"],
                     $data_table[$indice]["direccion"],
@@ -50,7 +50,7 @@ class UsuarioDAO
                     $data_table[$indice]["nombre"],
                     $data_table[$indice]["correo"],
                     $data_table[$indice]["password"],
-                    $data_table[$indice]["image"],
+                    $data_table[$indice]["imagen"],
                     $data_table[$indice]["tipo"],
                     $data_table[$indice]["telefono"],
                     $data_table[$indice]["direccion"],
@@ -74,7 +74,7 @@ class UsuarioDAO
                 $data_table[$indice]["nombre"],
                 $data_table[$indice]["correo"],
                 $data_table[$indice]["password"],
-                $data_table[$indice]["image"],
+                $data_table[$indice]["imagen"],
                 $data_table[$indice]["tipo"],
                 $data_table[$indice]["telefono"],
                 $data_table[$indice]["direccion"],
@@ -87,7 +87,7 @@ class UsuarioDAO
     public function insertarUsuario(Usuario $usuario)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO users VALUES (:id, :nombre, :correo, :password, :image, :tipo, :telefono, :direccion )";
+        $sql = "INSERT INTO users VALUES (:id, :nombre, :correo, :password, :imagen, :tipo, :telefono, :direccion )";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
@@ -95,7 +95,7 @@ class UsuarioDAO
                 ':nombre' => $usuario->getNombre(),
                 ':correo' => $usuario->getCorreo(),
                 ':password' => $usuario->getPassword(),
-                ':image' => $usuario->getImage(),
+                ':imagen' => $usuario->getImage(),
                 ':tipo' => $usuario->getTipo(),
                 ':telefono' => $usuario->getTelefono(),
                 ':direccion' => $usuario->getDireccion()
@@ -110,7 +110,7 @@ class UsuarioDAO
     public function modificarUsuario(Usuario $usuario, $id)
     {
         $data_source = new DataSource();
-        $sql = "UPDATE users SET nombre= :nombre, correo= :correo, password= :password, image= :image, 
+        $sql = "UPDATE users SET nombre= :nombre, correo= :correo, password= :password, imagen= :imagen, 
         tipo= :tipo, telefono= :telefono, direccion= :direccion where id = $id";
 
         $resultado = $data_source->ejecutarActualizacion(
@@ -119,7 +119,7 @@ class UsuarioDAO
                 ':nombre' => $usuario->getNombre(),
                 ':correo' => $usuario->getCorreo(),
                 ':password' => $usuario->getPassword(),
-                ':image' => $usuario->getImage(),
+                ':imagen' => $usuario->getImage(),
                 ':tipo' => $usuario->getTipo(),
                 ':telefono' => $usuario->getTelefono(),
                 ':direccion' => $usuario->getDireccion()
@@ -138,3 +138,4 @@ class UsuarioDAO
         return $resultado;
     }
 }
+    
