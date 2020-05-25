@@ -68,7 +68,7 @@ if(isset($_SESSION['ID_TIPO'])){
                       <option value="2">Usuario</option>
                     </select>
 
-                    <div class="form-group">
+                    <div class="form-group" style="margin: 10px">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
