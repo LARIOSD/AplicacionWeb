@@ -1,8 +1,12 @@
-<!DOCTYPE html>
 
 <?php
-
 session_start();
+	if($_SESSION['ID_TIPO']==2){
+	    header("Location:../usuario/usuario.php");
+    }else if($_SESSION['ID_TIPO']!=1){
+        header("Location:../login.php");
+    }
+
 require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 //require_once(__DIR__ . "/../../Model/dao/DataSource.php");
@@ -10,6 +14,8 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $usuario = leerUsuarios();
 ?>
 
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -399,7 +405,7 @@ $usuario = leerUsuarios();
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../login.php">Logout</a>
+                        <a class="btn btn-primary" href="../../Controller/actions/act_logout.php">Logout</a>
                     </div>
                 </div>
             </div>

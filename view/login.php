@@ -1,5 +1,12 @@
-<?
-
+<?php
+session_start();
+if(isset($_SESSION['ID_TIPO'])){
+  if($_SESSION['ID_TIPO']==2){
+    header("Location:../view/usuario/usuario.php");
+  }else if($_SESSION['ID_TIPO']==1){
+    header("Location:../view/admin/crud_usuario.php");
+  }
+}
 
 
 ?>
@@ -53,6 +60,14 @@
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
                     </div>
+
+                    <div class="form-group">
+                    <label for="exampleFormControlSelect1">Manera de acceso</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="opcion">
+                      <option value="1">Administrador</option>
+                      <option value="2">Usuario</option>
+                    </select>
+
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -68,8 +83,6 @@
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a>
                   </form>
-
-                  
                   <hr>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
