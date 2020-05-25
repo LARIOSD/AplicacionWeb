@@ -12,7 +12,6 @@
 		if($user != null){
             $_SESSION['Tipo'] = $user->getTipo();
             $tipo2= $user->getTipo();
-
             if($tipo!= $tipo2){
                 $errMsg .= 'Tipo de acceso no valido.';
                 echo $errMsg;

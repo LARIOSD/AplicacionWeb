@@ -9,10 +9,10 @@ $password = $_POST['password'];
 $tipo = $_POST['tipo'];
 $telefono = $_POST['telefono']; 
 $direccion = $_POST['direccion'];
-if (isset($_FILES["Imagen"]) && $_FILES["Imagen"]=="TRUE"){
-    echo "ok";
+
+if(isset($_FILES['Imagen'])){
+    $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
 }
-    
 
 
 
@@ -31,9 +31,9 @@ $usuario = new Usuario(
 
 $respuesta = insertarUsuario($usuario);
 if($respuesta!=null){
- //   header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
+    header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
-   // header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

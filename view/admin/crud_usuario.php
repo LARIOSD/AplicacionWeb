@@ -175,6 +175,8 @@ $usuario = leerUsuarios();
                                             <tr>
                                                 <th class="th-sm">ID
                                                 </th>
+                                                <th class="th-sm">Foto
+                                                </th>
                                                 <th class="th-sm">Name
                                                 </th>
                                                 <th class="th-sm">Email
@@ -189,6 +191,7 @@ $usuario = leerUsuarios();
                                             <?php foreach ($usuario as $aux) :  ?>
                                                 <tr>
                                                     <td> <?php echo $aux['id']; ?></td>
+                                                    <td> <img src="data:image/jpg;base64,<?php echo base64_encode($aux['imagen']); ?>" class="foto2">  </td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['correo']; ?> </td>
                                                     <td>
@@ -243,7 +246,7 @@ $usuario = leerUsuarios();
         <!--Crear Usuario modal-->
         <div class="modal fade" id="Crear_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST">
+                <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Crear Usuario</h4>
