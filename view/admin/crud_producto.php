@@ -1,8 +1,8 @@
 <?php
 session_start();
-if($_SESSION['ID_TIPO']==2){
+if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../usuario/usuario.php");
-}else if($_SESSION['ID_TIPO']!=1){
+} else if ($_SESSION['ID_TIPO'] != 1) {
     header("Location:../login.php");
 }
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
@@ -29,6 +29,9 @@ $producto = leerProducto();
 
     <!-- Custom styles for this template-->
     <link href="../plantilla/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Modificaciones adicionales-->
+    <link href="../plantilla/css/style_producto.css" rel="stylesheet">
 
 </head>
 
@@ -125,7 +128,8 @@ $producto = leerProducto();
 
                     <div class="container">
 
-                    <form action="../../controller/actions/act_insertprod.php" enctype="multipart/form-data" method="POST">
+                        <!-- 
+                        <form action="../../controller/actions/act_insertprod.php" enctype="multipart/form-data" method="POST">
                             <h2 class="nombre_accion">Agregar Producto</h2>
                             <div class="agregar">
                                 <input type="text" name="nombre_producto" class="form-control" placeholder="Nombre">
@@ -140,6 +144,7 @@ $producto = leerProducto();
                                 <button type="submit" value="Enviar" class="btn btn-success">Agregar</button>
                             </div>
                         </form>
+                        -->
 
                         <!--Tabla de productos-->
                         <div class="card shadow mb-4">
@@ -147,8 +152,8 @@ $producto = leerProducto();
                                 <h4 class="m-0 font-weight-bold text-primary">Tabla de productos</h4>
                                 <!--Boton crear producto -->
                                 <div class="text-right">
-                                    <a href=""  class="btn btn-success" data-toggle="modal" data-target="#agregar_producto" >
-                                    <i class="fas fa-plus-circle"></i>
+                                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#agregar_producto">
+                                        <i class="fas fa-plus-circle"></i>
                                     </a>
                                 </div>
 
@@ -174,32 +179,14 @@ $producto = leerProducto();
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID
-                                                </th>
-                                                <th>Tipo
-                                                </th>
-                                                <th>Producto
-                                                </th>
-                                                <th>Precio por unidad
-                                                </th>
-                                                <th>Disponibles
-                                                </th>
-                                                <th>Edit
-                                                </th>
-                                                <th>Delete
-                                                </th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php foreach ($producto as $aux) : ?>
                                                 <tr>
                                                     <td> <?php echo $aux['id']; ?></td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['correo']; ?> </td>
-                                                    <td>   </td>
-                                                    <td>   </td>
+                                                    <td> </td>
+                                                    <td> </td>
                                                     <td><a href="" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> </a></td>
                                                     <td><a href="" data-target="#eliminar_producto" data-toggle="modal" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
                                                 </tr>
@@ -237,37 +224,84 @@ $producto = leerProducto();
             <i class="fas fa-angle-up"></i>
         </a>
 
+
         <!--Crear producto modal-->
         <div class="modal fade" id="agregar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST">
+                <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-content">
+
                         <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Agregar producto</h4>
+                            <h4 class="modal-title w-100 font-weight-bold">Agregar Producto</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                                <i class="fas fa-user prefix grey-text"></i>
-                                <input type="text" name="nombre" id="orangeForm-name" class="form-control validate" placeholder="User Name">
-                            </div>
-                            <div class="md-form mb-5">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" name="correo" id="orangeForm-email" class="form-control validate" placeholder="Email">
-                            </div>
+                        <div class="columnas">
 
-                            <div class="md-form mb-4">
-                                <i class="fas fa-lock prefix grey-text"></i>
-                                <input type="password" name="password" id="orangeForm-pass" class="form-control validate" placeholder="Password">
-                            </div>
+                            <div id="datos" class="modal-body mx-2" style="display: inline-block">
 
+                                <!--Nombre-->
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fab fa-amilia"></i>
+                                    </span>
+                                    <input type="text" name="nombre_producto" class="form-control validate" placeholder="Nombre" required>
+                                </div>
+
+                                <!--Descripcion-->
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-align-right"></i>
+                                    </span>
+                                    <input type="text" name="descripcion_producto" class="form-control validate" placeholder="Descripcion" required>
+                                </div>
+
+                                <!--Precio-->
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </span>
+                                    <input type="text" name="precio_producto" class="form-control validate" placeholder="Precio" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                </div>
+
+                                <!--Cantidad-->
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                    <input type="text" name="cantidad_producto" class="form-control validate" placeholder="Cantidad" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                </div>
+
+                                <!--Tipo-->
+                                <br>
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-apple-alt"></i>
+                                    </span>
+                                    <select name="tipo_producto" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="1">Fruta</option>
+                                        <option value="2">Verdura</option>
+                                        <option value="2">Lacteo</option>
+                                    </select>
+                                </div>
+
+                                <div id="image" class="modal-body mx-2" style="text-align:center">
+                                    <!--Imagen-->
+                                    <div class="vistaPrevia">
+                                        <img id="img" src="../image/producto.jpg" alt="TU imagen">
+                                    </div>
+                                    <!--Imagen-->
+                                    <div class="btn btn-success btn-icon-split">
+                                        <input id="subirImg" type="file" name="Imagen" required>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button form="crear" type="submit" value="Enviar" class="btn btn-success">Agregar</button>
+                            </div>
                         </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button form="crear" type="submit" value="Enviar" class="btn btn-success">Crear</button>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -367,6 +401,8 @@ $producto = leerProducto();
         <!-- Page level custom scripts -->
         <script src="../plantilla/js/demo/chart-area-demo.js"></script>
         <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
+
+        <script src="vista.js"></script>
 
 </body>
 

@@ -35,7 +35,7 @@ $usuario = leerUsuarios();
     <link href="../plantilla/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Modificaciones adicionales-->
-    <link href="../plantilla/css/style.css" rel="stylesheet">
+    <link href="../plantilla/css/style_usuario.css" rel="stylesheet">
 
 </head>
 
@@ -133,26 +133,6 @@ $usuario = leerUsuarios();
 
 
                     <div class="container">
-
-
-                        <form action="../../controller/actions/act_Moduser.php" method="POST">
-                            <h2 class="nombre_accion">Modificar Usuario</h2>
-                            <div class="modificar">
-                                <input type="text" name="id" class="form-control" placeholder="id" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                                <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                <button type="submit" value="Enviar" class="btn btn-warning">Modificar</button>
-                            </div>
-                        </form>
-
-                        <form action="../../controller/actions/act_Elimuser.php" method="POST">
-                            <h2 class="nombre_accion">Eliminar Usuario</h2>
-                            <div class="eliminar">
-                                <input type="text" name="id" class="form-control" placeholder="id" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                                <button type="submit" value="Enviar" class="btn btn-danger">Eliminar</button>
-                            </div>
-                        </form>
 
                         <!--Tabla de usuarios-->
                         <div class="card shadow mb-4">
@@ -265,7 +245,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-user"></i>
                                     </span>
-                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
+                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
                                 </div>
 
                                 <!--Correo-->
@@ -273,7 +253,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-envelope prefix grey-text"></i>
                                     </span>
-                                    <input type="email" name="correo" class="form-control validate" placeholder="Email">
+                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" required>
                                 </div>
 
                                 <!--Telefono-->
@@ -281,7 +261,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-phone"></i>
                                     </span>
-                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono">
+                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" required>
                                 </div>
 
                                 <!--Direccion-->
@@ -289,7 +269,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-street-view"></i>
                                     </span>
-                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección">
+                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" required>
                                 </div>
 
                                 <!--Tipo-->
@@ -308,18 +288,18 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-lock"></i>
                                     </span>
-                                    <input type="password" name="password" class="form-control validate" placeholder="Password">
+                                    <input type="password" name="password" class="form-control validate" placeholder="Password" required>
                                 </div>
                             </div>
 
                             <div id="image" class="modal-body mx-2" style="text-align:center">
                                 <!--Imagen-->
                                 <div class="vistaPrevia">
-                                    <img id="img" src="../image/image.jpg"  alt="TU imagen">
+                                    <img id="img" src="../image/image.png" alt="TU imagen">
                                 </div>
                                 <!--Imagen-->
                                 <div class="btn btn-success btn-icon-split">
-                                    <input id="subirImg" type="file" name="Imagen" require>
+                                    <input id="subirImg" type="file" name="Imagen" required>
                                 </div>
                             </div>
 
@@ -344,40 +324,82 @@ $usuario = leerUsuarios();
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body mx-3" style="text-align:center">
+                        <div class="columnas">
+                            <div id="datos" class="modal-body mx-3" style="display: inline-block">
 
-                            <!--Id-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-fingerprint"></i>
-                                </span>
-                                <input type="text" name="id" class="form-control validate" placeholder="ID">
+                                <!--Id-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-fingerprint"></i>
+                                    </span>
+                                    <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                </div>
+
+                                <!--Nombre-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
+                                </div>
+
+                                <!--Correo-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-envelope prefix grey-text"></i>
+                                    </span>
+                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" required>
+                                </div>
+
+                                <!--Telefono-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-phone"></i>
+                                    </span>
+                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" required>
+                                </div>
+
+                                <!--Direccion-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-street-view"></i>
+                                    </span>
+                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" required>
+                                </div>
+
+                                <!--Tipo-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <select name="tipo" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Usuario</option>
+                                    </select>
+                                </div>
+
+                                <!--Password-->
+                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <input type="password" name="password" class="form-control validate" placeholder="Password" required>
+                                </div>
                             </div>
 
-                            <!-- Nombre-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
+                            <div id="image" class="modal-body mx-2" style="text-align:center">
+                                <!--Imagen-->
+                                <div class="vistaPrevia">
+                                    <img id="img" src="../image/image.jpg" alt="TU imagen">
+                                </div>
+                                <!--Imagen-->
+                                <div class="btn btn-primary btn-icon-split">
+                                    <input id="subirImg" type="file" name="Imagen" required>
+                                </div>
                             </div>
 
-                            <!--Correo-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-envelope prefix grey-text"></i>
-                                </span>
-                                <input type="email" name="correo" class="form-control validate" placeholder="Email">
-                            </div>
-
-                            <!--Password-->
-                            <div class="btn btn-primary btn-icon-split" style="margin: 5px">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                                <input type="password" name="password" class="form-control validate" placeholder="Password">
-                            </div>
                         </div>
+
                         <div class="modal-footer d-flex justify-content-center">
                             <button form="modificar" type="submit" value="Enviar" class="btn btn-primary">Modificar</button>
                         </div>
@@ -447,6 +469,10 @@ $usuario = leerUsuarios();
         <!-- Page level custom scripts -->
         <script src="../plantilla/js/demo/chart-area-demo.js"></script>
         <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
+
+        <!--SweetAlert2-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <!-- <script src="sweetalert.js" ></script> -->
 
         <script src="vista.js"></script>
 
