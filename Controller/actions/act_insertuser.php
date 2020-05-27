@@ -31,9 +31,9 @@ $usuario = new Usuario(
 
 $respuesta = insertarUsuario($usuario);
 if($respuesta!=null){
-    header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
+    header("Location: ../../view/admin/crud_usuario.php/id=1"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
-    header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location: ../../view/admin/crud_usuario.php/id=0"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

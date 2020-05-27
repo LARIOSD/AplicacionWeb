@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['ID_TIPO'] == 2) {
-    header("Location:../usuario/usuario.php");
+    header("Location:../store/index.php");
 } else if ($_SESSION['ID_TIPO'] != 1) {
     header("Location:../login.php");
 }

@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['ID_TIPO'])){
   if($_SESSION['ID_TIPO']==2){
-    header("Location:../view/usuario/usuario.php");
+    header("Location:../view/store/index.php");
   }else if($_SESSION['ID_TIPO']==1){
     header("Location:../view/admin/crud_usuario.php");
   }

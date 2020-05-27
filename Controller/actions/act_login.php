@@ -21,7 +21,7 @@
                 $_SESSION['ID_USUARIO'] = $user->getId();
                 $_SESSION['NOMBRE_USUARIO'] = $user->getNombre();
                 if($tipo!=1){
-                    header("Location: ../../view/usuario/usuario.php"); // ENVIAR AL HOMEPAGES DEL ADMIN
+                    header("Location: ../../view/store/index.php"); // ENVIAR AL HOMEPAGES DEL ADMIN
                 }else{
                     header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
                 }
