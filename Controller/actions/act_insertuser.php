@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once (__DIR__."/../mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 
@@ -14,10 +15,18 @@ if(isset($_FILES['Imagen'])){
     $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
 }
 
+$usuarios = leerUsuarios();
+$estado = 0;
+foreach ($usuarios as $aux) :
+    if($username === $aux['correo']){
+        $estado = 1;
+    }
+endforeach;
 
-
-
-$usuario = new Usuario(
+if($estado === 1){
+    header("Location: ../../view/admin/crud_usuario.php?id=0"); //NO SE PUDO REGISTRAR EL USUARIO PORQUE EL CORREO YA EXISTE
+}else{
+    $usuario = new Usuario(
         null,
         $nombre,
         $username,
@@ -29,11 +38,12 @@ $usuario = new Usuario(
 
     );
 
-$respuesta = insertarUsuario($usuario);
-if($respuesta!=null){
-    header("Location: ../../view/admin/crud_usuario.php/id=1"); // ENVIAR AL HOMEPAGES DEL USUARIO
-}else{
-    header("Location: ../../view/admin/crud_usuario.php/id=0"); //ENVIAR AL LOGIN NUEVAMENTE
+    $respuesta = insertarUsuario($usuario);
+    if($respuesta!=null){
+        header("Location: ../../view/admin/crud_usuario.php?id=1"); // SE CREO UN NUEVO USUARIO
+    }else{
+        header("Location: ../../view/admin/crud_usuario.php?id=0"); //NO SE PUEDO CREAR EL USUARIO
+    }
 }
 
 ?>
