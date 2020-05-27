@@ -33,6 +33,8 @@ $producto = leerProducto();
     <!-- Modificaciones adicionales-->
     <link href="../plantilla/css/style_producto.css" rel="stylesheet">
 
+    
+
 </head>
 
 <body id="page-top">
