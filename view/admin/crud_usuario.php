@@ -6,12 +6,16 @@ if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../login.php");
 }
 
+
 require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
 require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 //require_once(__DIR__ . "/../../Model/dao/DataSource.php");
 
 $usuario = leerUsuarios();
 ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -22,6 +26,7 @@ $usuario = leerUsuarios();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -37,10 +42,13 @@ $usuario = leerUsuarios();
     <!-- Modificaciones adicionales-->
     <link href="../plantilla/css/style_usuario.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert.js" ></script> 
+
 </head>
 
-<body id="page-top">
 
+<body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -471,8 +479,7 @@ $usuario = leerUsuarios();
         <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
 
         <!--SweetAlert2-->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <!-- <script src="sweetalert.js" ></script> -->
+
 
         <script src="vista.js"></script>
 
