@@ -33,7 +33,7 @@ $producto = leerProducto();
     <!-- Modificaciones adicionales-->
     <link href="../plantilla/css/style_producto.css" rel="stylesheet">
 
-    
+
 
 </head>
 
@@ -167,13 +167,19 @@ $producto = leerProducto();
                                             <tr>
                                                 <th class="th-sm">ID
                                                 </th>
-                                                <th class="th-sm">Tipo
-                                                </th>
                                                 <th class="th-sm">Producto
                                                 </th>
-                                                <th class="th-sm">Precio por unidad
+                                                <th class="th-sm">Descripcion
                                                 </th>
-                                                <th class="th-sm">Disponibles
+                                                <th class="th-sm">Imagen
+                                                </th>
+                                                <th class="th-sm">Cantidad
+                                                </th>
+                                                <th class="th-sm">Precio x U/D
+                                                </th>
+                                                <th class="th-sm">Estado
+                                                </th>
+                                                <th class="th-sm">Tipo producto
                                                 </th>
                                                 <th class="th-sm">Edit
                                                 </th>
@@ -184,13 +190,26 @@ $producto = leerProducto();
                                         <tbody>
                                             <?php foreach ($producto as $aux) : ?>
                                                 <tr>
-                                                    <td> <?php echo $aux['id']; ?></td>
+                                                    <td> <?php echo $aux['idproducts']; ?></td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
-                                                    <td> <?php echo $aux['correo']; ?> </td>
-                                                    <td> </td>
-                                                    <td> </td>
+                                                    <td> <?php echo $aux['descripcion']; ?> </td>
+                                                    <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
+                                                    <td> <?php echo $aux['cantidad']; ?> </td>
+                                                    <td> <?php echo $aux['precio']; ?> </td>
+
+
+                                                    <td> <?php echo $aux['estado']; ?> </td>
+
+                                                    <td> <?php echo $aux['idtipoproducts']; ?> </td>
                                                     <td><a href="" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> </a></td>
-                                                    <td><a href="" data-target="#eliminar_producto" data-toggle="modal" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                                                    <td>
+                                                    <form action="../../controller/actions/act_eliminarprod.php" method="POST">
+                                                            <input type="hidden" name="id" value="<?php echo $aux['idproducts']; ?>">
+                                                            <button id="eliminarProduct" type="submit" href="" class="btn btn-danger">
+                                                                <i class="fas fa-user-minus"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -230,7 +249,7 @@ $producto = leerProducto();
         <!--Crear producto modal-->
         <div class="modal fade" id="agregar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="crear" action="../../controller/actions/act_insertuser.php" method="POST" enctype="multipart/form-data">
+                <form id="crear" action="../../controller/actions/act_insertprod.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-content">
 
                         <div class="modal-header text-center">
@@ -248,7 +267,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fab fa-amilia"></i>
                                     </span>
-                                    <input type="text" name="nombre_producto" class="form-control validate" placeholder="Nombre" required>
+                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
                                 </div>
 
                                 <!--Descripcion-->
@@ -256,15 +275,15 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-align-right"></i>
                                     </span>
-                                    <input type="text" name="descripcion_producto" class="form-control validate" placeholder="Descripcion" required>
+                                    <input type="text" name="descripcion" class="form-control validate" placeholder="Descripcion" required>
                                 </div>
 
                                 <!--Precio-->
                                 <div id="datosProductos" class="btn btn-success btn-icon-split">
                                     <span class="icon text-white-50">
-                                        <i class="fas fa-dollar-sign"></i>
+                                        <i class="fas fa-hand-holding-usd"></i>
                                     </span>
-                                    <input type="text" name="precio_producto" class="form-control validate" placeholder="Precio" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                    <input type="text" name="precio" class="form-control validate" placeholder="Precio" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                                 </div>
 
                                 <!--Cantidad-->
@@ -272,7 +291,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-shopping-cart"></i>
                                     </span>
-                                    <input type="text" name="cantidad_producto" class="form-control validate" placeholder="Cantidad" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                    <input type="text" name="cantidad" class="form-control validate" placeholder="Cantidad" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                                 </div>
 
                                 <!--Tipo-->
@@ -281,10 +300,23 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-apple-alt"></i>
                                     </span>
-                                    <select name="tipo_producto" class="form-control" id="exampleFormControlSelect1">
+                                    <select name="idtipoproducts" class="form-control" id="exampleFormControlSelect1">
                                         <option value="1">Fruta</option>
                                         <option value="2">Verdura</option>
                                         <option value="2">Lacteo</option>
+                                    </select>
+                                </div>
+
+                                <!--Estado-->
+                                <br>
+                                <div id="datosProductos" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-apple-alt"></i>
+                                    </span>
+                                    <select name="estado" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="1">si</option>
+                                        <option value="2">no</option>
+
                                     </select>
                                 </div>
 
@@ -295,7 +327,7 @@ $producto = leerProducto();
                                     </div>
                                     <!--Imagen-->
                                     <div class="btn btn-success btn-icon-split">
-                                        <input id="subirImg" type="file" name="Imagen" required>
+                                        <input id="subirImg" type="file" name="image" required>
                                     </div>
                                 </div>
 
@@ -344,29 +376,6 @@ $producto = leerProducto();
             </div>
         </div>
         <!--fin Modificar producto modal -->
-
-        <!-- Delete Modal-->
-        <div class="modal fade" id="eliminar_producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form id="eliminar" action="../../controller/actions/act_Elimuser.php" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Selecciono eliminar. ¿ Esta seguro de eliminar este Producto ?</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button form="eliminar" type="submit" class="btn btn-danger" href=""> <i class="fas fa-trash"></i> </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

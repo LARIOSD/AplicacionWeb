@@ -23,7 +23,7 @@ foreach ($usuarios as $aux) :
 endforeach;
 
 if ($estado === 1) {
-  //  header("Location: ../../view/register.php?id=0"); //NO SE PUDO REGISTRAR EL USUARIO PORQUE EL CORREO YA EXISTE
+    //  header("Location: ../../view/register.php?id=0"); //NO SE PUDO REGISTRAR EL USUARIO PORQUE EL CORREO YA EXISTE
     echo json_encode(array('existe' => true));
 } else {
     if (!empty($_POST['correo']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
@@ -34,7 +34,7 @@ if ($estado === 1) {
                 $nombre,
                 $username,
                 $password,
-                null,
+                $imagen,
                 $tipo,
                 $telefono,
                 $direccion,
@@ -45,13 +45,12 @@ if ($estado === 1) {
     }
 }
 
-if (isset($respuesta)){
+if (isset($respuesta)) {
     if ($respuesta != null) {
         // header("Location: ../../view/register.php"); // ENVIAR AL LOGIN DE USUARIO
-         echo json_encode(array('error' => false));
-     } else {
+        echo json_encode(array('error' => false));
+    } else {
         // header("Location: ../../view/register.php"); //ENVIAR AL REGISTER NUEVAMENTE
         echo json_encode(array('error' => true));
-     }
+    }
 }
-

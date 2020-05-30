@@ -1,21 +1,24 @@
 <?php
-
+session_start();
 require_once (__DIR__."/../mdb/mdbProducto.php");
 require_once(__DIR__ . "/../../Model/entities/Producto.php");
 
-$nombre_producto = $_POST["nombre_producto"];
-$tipo_producto = $_POST["tipo_producto"];
-$estado_producto = $_POST["estado_producto"];
-$descripcion_producto = $_POST["descripcion_producto"];
-$precio_producto = $_POST["precio_producto"];
-$cantidad_producto = $_POST["cantidad_producto"];
-$imagen_producto = $_POST["imagen_producto"];
-$idtipo_producto = $_POST["idtipo_producto"];
+$nombre_producto = $_POST["nombre"];
+$estado_producto = $_POST["estado"];
+$descripcion_producto = $_POST["descripcion"];
+$precio_producto = $_POST["precio"];
+$cantidad_producto = $_POST["cantidad"];
+//$imagen_producto = $_POST["image"];
+$idtipo_producto = $_POST["idtipoproducts"];
+
+if(isset($_FILES['image'])){
+    $imagen_producto = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+}
+
 
 $producto = new Producto(
         null,
         $nombre_producto,
-        $tipo_producto,
         $estado_producto,
         $descripcion_producto,
         $precio_producto,
@@ -25,11 +28,16 @@ $producto = new Producto(
 
     );
 
-$respuesta = insertarUsuario($producto);
+$respuesta = insertarProducto($producto);
 if($respuesta!=null){
-    header("Location: ../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
+    echo "error 1";
+    //header("Location: ../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
-    header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    echo "estado = " + $estado_producto;
+
+    
+    
+    //header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

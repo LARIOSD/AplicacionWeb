@@ -5,27 +5,26 @@ require_once(__DIR__ . "/../entities/Producto.php");
 
 class ProductoDAO
 {
-    public function buscarProductoPorId($id)
+    public function buscarProductoPorId($idproducts)
     {
         $data_source = new DataSource();
         //password_hash("rasmuslerdorf", PASSWORD_DEFAULT)
         $data_table = $data_source->ejecutarConsulta(
-            "SELECT * FROM products WHERE id = :id",
-            array(':id' => $id)
+            "SELECT * FROM products WHERE idproducts = :idproducts",
+            array(':idproducts' => $idproducts)
         );
         $producto = null;
         if (count($data_table) == 1) {
             foreach ($data_table as $indice => $valor) {
                 $producto = new Producto(
-                    $data_table[$indice]["id"],
-                    $data_table[$indice]["nombre_producto"],
-                    $data_table[$indice]["tipo_producto"],
-                    $data_table[$indice]["estado_producto"],
-                    $data_table[$indice]["descripcion_producto"],
-                    $data_table[$indice]["precio_producto"],
-                    $data_table[$indice]["cantidad_producto"],
-                    $data_table[$indice]["imagen_producto"],
-                    $data_table[$indice]["idtipo_producto"],
+                    $data_table[$indice]["idproducts"],
+                    $data_table[$indice]["nombre"],
+                    $data_table[$indice]["estado"],
+                    $data_table[$indice]["descripcion"],
+                    $data_table[$indice]["precio"],
+                    $data_table[$indice]["cantidad"],
+                    $data_table[$indice]["image"],
+                    $data_table[$indice]["idtipoproducts"],
                 );
             }
             return $producto;
@@ -42,15 +41,14 @@ class ProductoDAO
         $productos = array();
         foreach ($data_table as $indice => $valor) {
             $producto = new Producto(
-                $data_table[$indice]["id"],
-                $data_table[$indice]["nombre_producto"],
-                $data_table[$indice]["tipo_producto"],
-                $data_table[$indice]["estado_producto"],
-                $data_table[$indice]["descripcion_producto"],
-                $data_table[$indice]["precio_producto"],
-                $data_table[$indice]["cantidad_producto"],
-                $data_table[$indice]["imagen_producto"],
-                $data_table[$indice]["idtipo_producto"],
+                $data_table[$indice]["idproducts"],
+                $data_table[$indice]["nombre"],
+                $data_table[$indice]["estado"],
+                $data_table[$indice]["descripcion"],
+                $data_table[$indice]["precio"],
+                $data_table[$indice]["cantidad"],
+                $data_table[$indice]["image"],
+                $data_table[$indice]["idtipoproducts"],
             );
             array_push($productos, $producto);
         }
@@ -60,19 +58,18 @@ class ProductoDAO
     public function insertarProducto(Producto $producto)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO products VALUES (:id, :nombre_producto, :tipo_producto, :estado_producto, :descripcion_producto, :precio_producto, :cantidad_producto, :imagen_producto )";
+        $sql = "INSERT INTO products VALUES (:idproducts, :nombre, :estado, :descripcion, :precio, :cantidad, :image )";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
-                ':id' => $producto->getId(),
-                ':nombre_producto' => $producto->getNombre_producto(),
-                ':tipo_producto' => $producto->getTipo_producto(),
-                ':estado_producto' => $producto->getEstado_producto(),
-                ':descripcion_producto' => $producto->getDescripcion_producto(),
-                ':precio_producto' => $producto->getPrecio_producto(),
-                ':cantidad_producto' => $producto->getCantidad_producto(),
-                ':imagen_producto' => $producto->getImagen_producto(),
-                ':idtipo_producto' => $producto->getIdtipo_producto(),
+                ':idproducts' => $producto->getId(),
+                ':nombre' => $producto->getNombre_producto(),
+                ':estado' => $producto->getEstado_producto(),
+                ':descripcion' => $producto->getDescripcion_producto(),
+                ':precio' => $producto->getPrecio_producto(),
+                ':cantidad' => $producto->getCantidad_producto(),
+                ':image' => $producto->getImagen_producto(),
+                ':idtipoproducts' => $producto->getIdtipo_producto(),
 
             )
         );
@@ -81,24 +78,23 @@ class ProductoDAO
     }
 
 
-    public function modificarProducto(Producto $producto, $id)
+    public function modificarProducto(Producto $producto, $idproducts)
     {
         $data_source = new DataSource();
-        $sql = "UPDATE products SET nombre_producto= :nombre_producto, tipo_producto= :tipo_producto, estado_producto= :estado_producto, descripcion_producto= :descripcion_producto, 
-        precio_producto= :precio_producto, cantidad_producto= :cantidad_producto, imagen_producto= :imagen_producto, idtipo_producto= :idtipo_producto where id = $id";
+        $sql = "UPDATE products SET nombre= :nombre, estado= :estado, descripcion= :descripcion, 
+        precio= :precio, cantidad= :cantidad, image= :image, idtipoproducts= :idtipoproducts where idproducts = $idproducts";
 
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
-                ':id' => $producto->getId(),
-                ':nombre_producto' => $producto->getNombre_producto(),
-                ':tipo_producto' => $producto->getTipo_producto(),
-                ':estado_producto' => $producto->getEstado_producto(),
-                ':descripcion_producto' => $producto->getDescripcion_producto(),
-                ':precio_producto' => $producto->getPrecio_producto(),
-                ':cantidad_producto' => $producto->getCantidad_producto(),
-                ':imagen_producto' => $producto->getImagen_producto(),
-                ':idtipo_producto' => $producto->getIdtipo_producto(),
+                ':idproducts' => $producto->getId(),
+                ':nombre' => $producto->getNombre_producto(),
+                ':estado' => $producto->getEstado_producto(),
+                ':descripcion' => $producto->getDescripcion_producto(),
+                ':precio' => $producto->getPrecio_producto(),
+                ':cantidad' => $producto->getCantidad_producto(),
+                ':image' => $producto->getImagen_producto(),
+                ':idtipoproducts' => $producto->getIdtipo_producto(),
             )
         );
 
@@ -108,8 +104,8 @@ class ProductoDAO
     public function borrarProducto($id)
     {
         $data_source = new DataSource();
-        $producto = buscarUsuarioPorId($id);
-        $resultado = $data_source->ejecutarActualizacion("DELETE FROM products WHERE id = :id", array('id' => $id));
+        $producto = buscarProductoPorId($id);
+        $resultado = $data_source->ejecutarActualizacion("DELETE FROM products WHERE idproducts = :idproducts", array('idproducts' => $id));
 
         return $resultado;
     }

@@ -4,7 +4,6 @@ class Producto
 {
     private $id;
     private $nombre_producto;
-    private $tipo_producto;
     private $estado_producto;
     private $descripcion_producto;
     private $precio_producto;
@@ -12,14 +11,13 @@ class Producto
     private $imagen_producto;
     private $idtipo_producto;
 
-    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto, 
-    $tipo_producto, $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
+    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto,
+    $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
     {
         $this->id = $id;
         $this->nombre_producto = $nombre_producto;
         $this->precio_producto = $precio_producto;
         $this->estado_producto = $estado_producto;
-        $this->tipo_producto = $tipo_producto;
         $this->descripcion_producto = $descripcion_producto;
         $this->cantidad_producto = $cantidad_producto;
         $this->imagen_producto = $imagen_producto;
@@ -96,21 +94,7 @@ class Producto
 
         return $this;
     }
-
-
-    public function getTipo_producto()
-    {
-        return $this->tipo_producto;
-    }
-
-
-    public function setTipo_producto($tipo_producto)
-    {
-        $this->tipo_producto = $tipo_producto;
-
-        return $this;
-    }
-
+    
 
     public function getPrecio_producto()
     {

@@ -85,7 +85,7 @@ if(isset($_SESSION['ID_TIPO'])){
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                    <a class="small" href="forgot-password.php">Forgot Password?</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="register.php">Create an Account!</a>
