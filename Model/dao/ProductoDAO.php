@@ -21,9 +21,10 @@ class ProductoDAO
                     $data_table[$indice]["nombre"],
                     $data_table[$indice]["estado"],
                     $data_table[$indice]["descripcion"],
-                    $data_table[$indice]["precio"],
-                    $data_table[$indice]["cantidad"],
                     $data_table[$indice]["image"],
+                    $data_table[$indice]["cantidad"],
+                    $data_table[$indice]["precio"],
+                    $data_table[$indice]["estado"],
                     $data_table[$indice]["idtipoproducts"],
                 );
             }
@@ -45,9 +46,10 @@ class ProductoDAO
                 $data_table[$indice]["nombre"],
                 $data_table[$indice]["estado"],
                 $data_table[$indice]["descripcion"],
-                $data_table[$indice]["precio"],
-                $data_table[$indice]["cantidad"],
                 $data_table[$indice]["image"],
+                $data_table[$indice]["cantidad"],
+                $data_table[$indice]["precio"],
+                $data_table[$indice]["estado"],
                 $data_table[$indice]["idtipoproducts"],
             );
             array_push($productos, $producto);
@@ -58,7 +60,7 @@ class ProductoDAO
     public function insertarProducto(Producto $producto)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO products VALUES (:idproducts, :nombre, :estado, :descripcion, :precio, :cantidad, :image )";
+        $sql = "INSERT INTO products VALUES (:idproducts, :nombre, :descripcion, :image, :cantidad, :precio, :estado, :idtipoproducts)";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(

@@ -31,13 +31,9 @@ $producto = new Producto(
 $respuesta = insertarProducto($producto);
 if($respuesta!=null){
     echo "error 1";
-    //header("Location: ../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
+    header("Location: ../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
-    echo "estado = " + $estado_producto;
-
-    
-    
-    //header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>
