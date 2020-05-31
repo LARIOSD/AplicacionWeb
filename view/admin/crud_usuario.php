@@ -186,7 +186,6 @@ $usuario = leerUsuarios();
                                                         <button href="" id="modificarUser" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
                                                             <i class="fas fa-user-edit"></i>
                                                         </button>
-                                                        </form>
                                                     </td>
                                                     <td>
                                                         <form action="../../controller/actions/act_Elimuser.php" method="POST">
@@ -305,7 +304,7 @@ $usuario = leerUsuarios();
                                 </div>
                                 <!--Imagen-->
                                 <div class="btn btn-success btn-icon-split">
-                                    <input id="subirImg" type="file" name="Imagen" required>
+                                    <input id="subirImg" type="file" name="Imagen" >
                                 </div>
                             </div>
 
@@ -346,7 +345,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-user"></i>
                                     </span>
-                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
+                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" >
                                 </div>
 
                                 <!--Correo-->
@@ -354,7 +353,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-envelope prefix grey-text"></i>
                                     </span>
-                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" required>
+                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" >
                                 </div>
 
                                 <!--Telefono-->
@@ -362,7 +361,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-phone"></i>
                                     </span>
-                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" required>
+                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" >
                                 </div>
 
                                 <!--Direccion-->
@@ -370,7 +369,7 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-street-view"></i>
                                     </span>
-                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" required>
+                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" >
                                 </div>
 
                                 <!--Tipo-->
@@ -389,18 +388,18 @@ $usuario = leerUsuarios();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-lock"></i>
                                     </span>
-                                    <input type="password" name="password" class="form-control validate" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control validate" placeholder="Password" >
                                 </div>
                             </div>
 
                             <div id="image" class="modal-body mx-2" style="text-align:center">
                                 <!--Imagen-->
                                 <div class="vistaPrevia">
-                                    <img id="img" src="../image/image.jpg" alt="TU imagen">
+                                    <img id="imga" src="../image/image.png" alt="TU imagen">
                                 </div>
                                 <!--Imagen-->
                                 <div class="btn btn-primary btn-icon-split">
-                                    <input id="subirImg" type="file" name="Imagen" required>
+                                    <input id="subirImga" type="file" name="Imagen" >
                                 </div>
                             </div>
 
@@ -414,31 +413,6 @@ $usuario = leerUsuarios();
             </div>
         </div>
         <!--fin Modificar Usuario modal -->
-
-        <!-- Delete Modal
-          <div class="modal fade" id="eliminar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form id="eliminar" action="../../controller/actions/act_Elimuser.php" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Selecciono eliminar. ¿ Esta seguro de eliminar este resu$resultado ?</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <button form="eliminar" type="submit" class="btn btn-danger" href=""> <i class="fas fa-trash"></i> </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        -->
-
-
-
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -477,9 +451,10 @@ $usuario = leerUsuarios();
         <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
 
         <!--SweetAlert2-->
-
-
-        <script src="vista.js"></script>
+        
+        <!--vista Previa de imagenes-->
+        <script src="../js/vista_image_crearUser.js"></script>
+        <script src="../js/vista_image_modUser.js"></script>
 
 </body>
 

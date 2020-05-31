@@ -4,23 +4,30 @@ class Producto
 {
     private $id;
     private $nombre_producto;
-    private $estado_producto;
     private $descripcion_producto;
-    private $precio_producto;
-    private $cantidad_producto;
     private $imagen_producto;
+    private $cantidad_producto;
+    private $precio_producto;
+    private $estado_producto;
     private $idtipo_producto;
 
-    public function __construct($id, $nombre_producto, $precio_producto, $estado_producto,
-    $descripcion_producto, $cantidad_producto, $imagen_producto, $idtipo_producto)
-    {
+    public function __construct(
+        $id,
+        $nombre_producto,
+        $descripcion_producto,
+        $imagen_producto,
+        $cantidad_producto,
+        $precio_producto,
+        $estado_producto,
+        $idtipo_producto
+    ) {
         $this->id = $id;
         $this->nombre_producto = $nombre_producto;
+        $this->descripcion_producto = $descripcion_producto;
+        $this->imagen_producto = $imagen_producto;
+        $this->cantidad_producto = $cantidad_producto;
         $this->precio_producto = $precio_producto;
         $this->estado_producto = $estado_producto;
-        $this->descripcion_producto = $descripcion_producto;
-        $this->cantidad_producto = $cantidad_producto;
-        $this->imagen_producto = $imagen_producto;
         $this->idtipo_producto = $idtipo_producto;
     }
 
@@ -94,7 +101,7 @@ class Producto
 
         return $this;
     }
-    
+
 
     public function getPrecio_producto()
     {
@@ -145,7 +152,4 @@ class Producto
         }
         return $array;
     }
-
-
- 
 }

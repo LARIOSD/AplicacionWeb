@@ -19,7 +19,6 @@ class ProductoDAO
                 $producto = new Producto(
                     $data_table[$indice]["idproducts"],
                     $data_table[$indice]["nombre"],
-                    $data_table[$indice]["estado"],
                     $data_table[$indice]["descripcion"],
                     $data_table[$indice]["image"],
                     $data_table[$indice]["cantidad"],
@@ -44,7 +43,6 @@ class ProductoDAO
             $producto = new Producto(
                 $data_table[$indice]["idproducts"],
                 $data_table[$indice]["nombre"],
-                $data_table[$indice]["estado"],
                 $data_table[$indice]["descripcion"],
                 $data_table[$indice]["image"],
                 $data_table[$indice]["cantidad"],
@@ -60,17 +58,17 @@ class ProductoDAO
     public function insertarProducto(Producto $producto)
     {
         $data_source = new DataSource();
-        $sql = "INSERT INTO products VALUES (:idproducts, :nombre, :descripcion, :image, :cantidad, :precio, :estado, :idtipoproducts)";
+        $sql = "INSERT INTO products VALUES (:idproducts, :nombre, :descripcion,:image, :cantidad, :precio,  :estado,   :idtipoproducts)";
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':idproducts' => $producto->getId(),
                 ':nombre' => $producto->getNombre_producto(),
-                ':estado' => $producto->getEstado_producto(),
                 ':descripcion' => $producto->getDescripcion_producto(),
-                ':precio' => $producto->getPrecio_producto(),
-                ':cantidad' => $producto->getCantidad_producto(),
                 ':image' => $producto->getImagen_producto(),
+                ':cantidad' => $producto->getCantidad_producto(),
+                ':precio' => $producto->getPrecio_producto(),
+                ':estado' => $producto->getEstado_producto(),
                 ':idtipoproducts' => $producto->getIdtipo_producto(),
 
             )
@@ -83,19 +81,19 @@ class ProductoDAO
     public function modificarProducto(Producto $producto, $idproducts)
     {
         $data_source = new DataSource();
-        $sql = "UPDATE products SET nombre= :nombre, estado= :estado, descripcion= :descripcion, 
-        precio= :precio, cantidad= :cantidad, image= :image, idtipoproducts= :idtipoproducts where idproducts = $idproducts";
+        $sql = "UPDATE products SET nombre= :nombre, descripcion= :descripcion, image= :image, 
+        cantidad= :cantidad,precio= :precio,  estado= :estado, idtipoproducts= :idtipoproducts where idproducts = $idproducts";
 
         $resultado = $data_source->ejecutarActualizacion(
             $sql,
             array(
                 ':idproducts' => $producto->getId(),
                 ':nombre' => $producto->getNombre_producto(),
-                ':estado' => $producto->getEstado_producto(),
                 ':descripcion' => $producto->getDescripcion_producto(),
-                ':precio' => $producto->getPrecio_producto(),
-                ':cantidad' => $producto->getCantidad_producto(),
                 ':image' => $producto->getImagen_producto(),
+                ':cantidad' => $producto->getCantidad_producto(),
+                ':precio' => $producto->getPrecio_producto(),
+                ':estado' => $producto->getEstado_producto(),
                 ':idtipoproducts' => $producto->getIdtipo_producto(),
             )
         );

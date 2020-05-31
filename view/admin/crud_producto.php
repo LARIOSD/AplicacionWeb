@@ -23,6 +23,7 @@ $producto = leerProducto();
 
     <title>Administrador </title>
     <!-- http://localhost/AplicacionWeb/view/admin/crud_usuario.php -->
+
     <!-- Custom fonts for this template-->
     <link href="../plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -33,6 +34,8 @@ $producto = leerProducto();
     <!-- Modificaciones adicionales-->
     <link href="../plantilla/css/style_producto.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert.js"></script>
 
 
 </head>
@@ -127,26 +130,7 @@ $producto = leerProducto();
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-
                     <div class="container">
-
-                        <!-- 
-                        <form action="../../controller/actions/act_insertprod.php" enctype="multipart/form-data" method="POST">
-                            <h2 class="nombre_accion">Agregar Producto</h2>
-                            <div class="agregar">
-                                <input type="text" name="nombre_producto" class="form-control" placeholder="Nombre">
-                                <input type="email" name="tipo_producto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                <input type="password" name="estado_producto" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                <input type="text" name="descripcion_producto" class="form-control" placeholder="image">
-                                <input type="text" name="precio_producto" class="form-control" placeholder="tipo">
-                                <input type="text" name="cantidad_producto" class="form-control" placeholder="telefono">
-                                <input type="text" name="image_producto" class="form-control" placeholder="direccion">
-                                <input type="text" name="idtipo_producto" class="form-control" placeholder="direccion">
-
-                                <button type="submit" value="Enviar" class="btn btn-success">Agregar</button>
-                            </div>
-                        </form>
-                        -->
 
                         <!--Tabla de productos-->
                         <div class="card shadow mb-4">
@@ -167,7 +151,7 @@ $producto = leerProducto();
                                             <tr>
                                                 <th class="th-sm">ID
                                                 </th>
-                                                <th class="th-sm">Producto
+                                                <th class="th-sm">Nombre
                                                 </th>
                                                 <th class="th-sm">Descripcion
                                                 </th>
@@ -196,14 +180,17 @@ $producto = leerProducto();
                                                     <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
                                                     <td> <?php echo $aux['cantidad']; ?> </td>
                                                     <td> <?php echo $aux['precio']; ?> </td>
-
-
                                                     <td> <?php echo $aux['estado']; ?> </td>
-
                                                     <td> <?php echo $aux['idtipoproducts']; ?> </td>
-                                                    <td><a href="" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> </a></td>
+
                                                     <td>
-                                                    <form action="../../controller/actions/act_eliminarprod.php" method="POST">
+                                                    <button href="" id="modificarProduct" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                        </button>
+                                                    </td>
+
+                                                    <td>
+                                                        <form action="../../controller/actions/act_eliminarprod.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $aux['idproducts']; ?>">
                                                             <button id="eliminarProduct" type="submit" href="" class="btn btn-danger">
                                                                 <i class="fas fa-user-minus"></i>
@@ -303,7 +290,7 @@ $producto = leerProducto();
                                     <select name="idtipoproducts" class="form-control" id="exampleFormControlSelect1">
                                         <option value="1">Fruta</option>
                                         <option value="2">Verdura</option>
-                                        <option value="2">Lacteo</option>
+                                        <option value="3">Lacteo</option>
                                     </select>
                                 </div>
 
@@ -327,7 +314,7 @@ $producto = leerProducto();
                                     </div>
                                     <!--Imagen-->
                                     <div class="btn btn-success btn-icon-split">
-                                        <input id="subirImg" type="file" name="image" required>
+                                        <input id="subirImg" type="file" name="image">
                                     </div>
                                 </div>
 
@@ -344,7 +331,7 @@ $producto = leerProducto();
         <!--Modificar producto modal-->
         <div class="modal fade" id="modificar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/act_Moduser.php " method="POST">
+                <form id="modificar" action="../../controller/actions/act_moduprod.php " method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
