@@ -5,13 +5,13 @@ require_once(__DIR__ . "/../../Model/entities/Producto.php");
 
 $nombre_producto = $_POST["nombre"];
 $descripcion_producto = $_POST["descripcion"];
+
 if(isset($_FILES['image'])){
     $imagen_producto = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 }
 $cantidad_producto = $_POST["cantidad"];
 $precio_producto = $_POST["precio"];
 $estado_producto = $_POST["estado"];
-//$imagen_producto = $_POST["image"];
 $idtipo_producto = $_POST["idtipoproducts"];
 
 

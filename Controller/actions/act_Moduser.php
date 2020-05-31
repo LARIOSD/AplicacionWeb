@@ -7,7 +7,11 @@ $id = $_POST['id'];
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
-$image = $_POST['image'];
+
+if(isset($_FILES['Imagen'])){
+    $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
+}
+
 $tipo = $_POST['tipo'];
 $telefono = $_POST['telefono'];
 $direccion = $_POST['direccion'];

@@ -177,7 +177,7 @@ $producto = leerProducto();
                                                     <td> <?php echo $aux['idproducts']; ?></td>
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['descripcion']; ?> </td>
-                                                    <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
+                                                    <td> <img width="100px" height="100px" src="data:image/jpg;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
                                                     <td> <?php echo $aux['cantidad']; ?> </td>
                                                     <td> <?php echo $aux['precio']; ?> </td>
                                                     <td> <?php echo $aux['estado']; ?> </td>

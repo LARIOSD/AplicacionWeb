@@ -42,7 +42,7 @@
                     <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a link to reset your password!</p>
                   </div>
                   <form class="user">
-                    <div class="form-group">
+                    <div class="form-group" action="../../controller/actions/recuperar_pass.php" method="POST">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Recuperar contraseña">

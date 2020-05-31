@@ -14,10 +14,6 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 $usuario = leerUsuarios();
 ?>
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 

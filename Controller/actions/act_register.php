@@ -7,8 +7,8 @@ $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
 $tipo = 2;
-$telefono = 3142637991;
-$direccion = "kr30n-s2-3";
+$telefono = $_POST['telafono'];
+$direccion = $_POST['direccion'];
 
 if (isset($_FILES['Imagen'])) {
     $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
