@@ -25,17 +25,17 @@ $producto = leerProducto();
     <!-- http://localhost/AplicacionWeb/view/admin/crud_usuario.php -->
 
     <!-- Custom fonts for this template-->
-    <link href="../plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../plantilla/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Modificaciones adicionales-->
-    <link href="../plantilla/css/style_producto.css" rel="stylesheet">
+    <link href="css/style_producto.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="sweetalert.js"></script>
+    <script src="js/sweetalert.js"></script>
 
 
 </head>
@@ -190,7 +190,7 @@ $producto = leerProducto();
                                                     </td>
 
                                                     <td>
-                                                        <form action="../../controller/actions/act_eliminarprod.php" method="POST">
+                                                        <form action="../../controller/actions/producto/act_eliminarprod.php" method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $aux['idproducts']; ?>">
                                                             <button id="eliminarProduct" type="submit" href="" class="btn btn-danger">
                                                                 <i class="fas fa-user-minus"></i>
@@ -236,7 +236,7 @@ $producto = leerProducto();
         <!--Crear producto modal-->
         <div class="modal fade" id="agregar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="crear" action="../../controller/actions/act_insertprod.php" method="POST" enctype="multipart/form-data">
+                <form id="crear" action="../../controller/actions/producto/act_insertprod.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-content">
 
                         <div class="modal-header text-center">
@@ -270,7 +270,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-hand-holding-usd"></i>
                                     </span>
-                                    <input type="text" name="precio" class="form-control validate" placeholder="Precio" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                    <input type="number" name="precio" class="form-control validate" placeholder="Precio" min="100" required>
                                 </div>
 
                                 <!--Cantidad-->
@@ -278,7 +278,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-shopping-cart"></i>
                                     </span>
-                                    <input type="text" name="cantidad" class="form-control validate" placeholder="Cantidad" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                                    <input type="number" name="cantidad" class="form-control validate" placeholder="Cantidad" min="1" required>
                                 </div>
 
                                 <!--Tipo-->
@@ -310,7 +310,7 @@ $producto = leerProducto();
                                 <div id="image" class="modal-body mx-2" style="text-align:center">
                                     <!--Imagen-->
                                     <div class="vistaPrevia">
-                                        <img id="img" src="../image/producto.jpg" alt="TU imagen">
+                                        <img id="img" src="img/producto.jpg" alt="TU imagen">
                                     </div>
                                     <!--Imagen-->
                                     <div class="btn btn-success btn-icon-split">
@@ -331,7 +331,7 @@ $producto = leerProducto();
         <!--Modificar producto modal-->
         <div class="modal fade" id="modificar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/act_moduprod.php " method="POST">
+                <form id="modificar" action="../../controller/actions/producto/act_moduprod.php " method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
@@ -370,37 +370,37 @@ $producto = leerProducto();
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button action="../../controller/actions/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <button action="../../controller/actions/producto/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../../Controller/actions/act_logout.php">Logout</a>
+                        <a class="btn btn-primary" href="../../Controller/actions/producto/act_logout.php">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="../plantilla/vendor/jquery/jquery.min.js"></script>
-        <script src="../plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="../plantilla/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="../plantilla/js/sb-admin-2.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="../plantilla/vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="../plantilla/js/demo/chart-area-demo.js"></script>
-        <script src="../plantilla/js/demo/chart-pie-demo.js"></script>
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
 
-        <script src="vista.js"></script>
+        <script src="js/vista.js"></script>
 
 </body>
 

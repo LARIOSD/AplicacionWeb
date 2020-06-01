@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__ . "/../mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../Model/entities/Usuario.php");
+require_once(__DIR__ . "/../../mdb/mdbUsuario.php");
+require_once(__DIR__ . "/../../../Model/entities/Usuario.php");
 
 $username = $_POST['correo'];
 

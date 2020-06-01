@@ -1,13 +1,13 @@
 <?php
 
-require_once(__DIR__ . "/../mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../Model/entities/Usuario.php");
+require_once(__DIR__ . "/../../mdb/mdbUsuario.php");
+require_once(__DIR__ . "/../../../Model/entities/Usuario.php");
 
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];
 $password = $_POST['password'];
 $tipo = 2;
-$telefono = $_POST['telafono'];
+$telefono = $_POST['telefono'];
 $direccion = $_POST['direccion'];
 
 if (isset($_FILES['Imagen'])) {

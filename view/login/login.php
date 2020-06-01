@@ -25,11 +25,11 @@ if(isset($_SESSION['ID_TIPO'])){
   <title>Login</title>
 
   <!-- Custom fonts for this template-->
-  <link href="plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -53,12 +53,12 @@ if(isset($_SESSION['ID_TIPO'])){
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
                   
-                  <form class="user" action="../controller/actions/act_login.php" method="POST" >
+                  <form class="user" action="../../controller/actions/act_login.php" method="POST" >
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" name="correo" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" name="correo" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password" required>
                     </div>
 
                     <div class="form-group">
@@ -103,14 +103,14 @@ if(isset($_SESSION['ID_TIPO'])){
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="plantilla/vendor/jquery/jquery.min.js"></script>
-  <script src="plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="plantilla/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="plantilla/js/sb-admin-2.min.js"></script>
+  <script src="../admin/js/sb-admin-2.min.js"></script>
 
 </body>
 

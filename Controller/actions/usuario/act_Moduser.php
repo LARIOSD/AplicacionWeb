@@ -1,7 +1,7 @@
 <?php
 
-require_once (__DIR__."/../mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../Model/entities/Usuario.php");
+require_once (__DIR__."/../../mdb/mdbUsuario.php");
+require_once(__DIR__ . "/../../../Model/entities/Usuario.php");
 
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];
@@ -31,7 +31,7 @@ $usuario = new Usuario(
 $respuesta = modificarUsuario($usuario,$id);
 
 if($respuesta!=null){
-    header("Location: ../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
+    header("Location: ../../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
     echo("Usuario no modificado");
     //header("Location: ../../view/login/login.php"); //ENVIAR AL LOGIN NUEVAMENTE

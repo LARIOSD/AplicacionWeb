@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['ID_TIPO'])){
-  if($_SESSION['ID_TIPO']==2){
+if (isset($_SESSION['ID_TIPO'])) {
+  if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../view/store/index.php");
-  }else if($_SESSION['ID_TIPO']==1){
+  } else if ($_SESSION['ID_TIPO'] == 1) {
     header("Location:../view/admin/crud_usuario.php");
   }
 }
@@ -21,13 +21,13 @@ if(isset($_SESSION['ID_TIPO'])){
 
   <title>Register</title>
   <!-- Custom fonts for this template-->
-  <link href="plantilla/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="plantilla/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="js/sweetalert.js"></script>
+  <script src="../js/sweetalert.js"></script>
 
 </head>
 
@@ -43,23 +43,40 @@ if(isset($_SESSION['ID_TIPO'])){
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" action="../controller/actions/act_register.php" method="POST">
+              <form class="user" action="../../controller/actions/act_register.php" method="POST">
+                <!--Nombre -->
                 <div class="form-group">
-                  <!--<div class="col-sm-6 mb-3 mb-sm-0">-->
-                  <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name">
+                  <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name" required>
                 </div>
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-user" name="correo" id="exampleInputEmail" placeholder="Email Address">
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
-                  </div>
-                  <!-- --><div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" name="confirm_password" id="exampleRepeatPassword" placeholder="Repeat Password">
-                  </div>
 
+                <div class="form-group row">
+                <!--Telefono -->
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="tel" pattern="[3][0-2][0-9]-[0-9]{3}-[0-9]{4}" class="form-control form-control-user" name="telefono" id="exampleInputPassword" placeholder="Phone Number"  required>
+                    <samp style="color:#e2d9e9" >Formato: 300-123-4567</samp>
+                  </div>
+                  <!--Direccion-->
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" name="direccion" id="exampleRepeatPassword" placeholder="Direction" required>
+                  </div>
                 </div>
+                
+                <!--Email -->
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-user" name="correo" id="exampleInputEmail" placeholder="Email Address" required>
+                </div>
+
+                <div class="form-group row">
+                <!--Pass -->
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password" required>
+                  </div>
+                  <!--Confirmar Pass -->
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" name="confirm_password" id="exampleRepeatPassword" placeholder="Repeat Password" required>
+                  </div>
+                </div>
+
                 <button href="" type="submit" class="btn btn-primary btn-user btn-block" value="send">
                   Register Account
                 </button>
@@ -85,12 +102,12 @@ if(isset($_SESSION['ID_TIPO'])){
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="plantilla/vendor/jquery/jquery.min.js"></script>
-  <script src="plantilla/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../admin/vendor/jquery/jquery.min.js"></script>
+  <script src="../admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="plantilla/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../admin/vendor/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for all pages-->
-  <script src="plantilla/js/sb-admin-2.min.js"></script>
+  <script src="../admin/js/sb-admin-2.min.js"></script>
 
 
 
@@ -102,7 +119,8 @@ if(isset($_SESSION['ID_TIPO'])){
         type: 'POST',
         dataType: 'json',
         data: $("#formrg").serialize(),
-        beforeSend: function() {}}).done(function(respuesta) {
+        beforeSend: function() {}
+      }).done(function(respuesta) {
         if (!respuesta.existe) {
           if (!respuesta.error) {
             Swal.fire({
@@ -112,9 +130,9 @@ if(isset($_SESSION['ID_TIPO'])){
               timer: 2000
             })
             setTimeout(function() {
-            window.location.href = "register.php";
+              window.location.href = "register.php";
             }, 2500);
-          }else{
+          } else {
             Swal.fire({
               type: 'error',
               title: '¡ERROR!',
@@ -122,7 +140,7 @@ if(isset($_SESSION['ID_TIPO'])){
               timer: 1500
             })
           }
-        }else{
+        } else {
           Swal.fire({
             type: 'error',
             title: '¡ERROR!',
@@ -130,11 +148,10 @@ if(isset($_SESSION['ID_TIPO'])){
             timer: 1500
           })
         }
-      }).fail(function(respuesta){
-          document.write(respuesta.responseText);
-        }).always(function() {
-      });
-  });
+      }).fail(function(respuesta) {
+        document.write(respuesta.responseText);
+      }).always(function() {});
+    });
   </script>
 </body>
 
