@@ -3,12 +3,10 @@ session_start();
 if ($_SESSION['ID_TIPO'] == 1) {
 	header("Location:../admin/crud_usuario.php");
 } else if ($_SESSION['ID_TIPO'] != 2) {
-	header("Location:../login.php");
+	header("Location:../login/login.php");
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,10 +1,12 @@
 <?php
 session_start();
 if ($_SESSION['ID_TIPO'] == 2) {
-    header("Location:../usuario/usuario.php");
+    header("Location:../store/index.php");
 } else if ($_SESSION['ID_TIPO'] != 1) {
     header("Location:../login.php");
 }
+
+    
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
 require_once(__DIR__ . "/../../Model/entities/producto.php");
 $producto = leerProducto();
@@ -377,7 +379,7 @@ $producto = leerProducto();
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../../Controller/actions/producto/act_logout.php">Logout</a>
+                        <a class="btn btn-primary" href="../../Controller/actions/login/act_logout.php">Logout</a>
                     </div>
                 </div>
             </div>

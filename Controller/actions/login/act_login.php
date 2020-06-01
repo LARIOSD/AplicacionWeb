@@ -30,6 +30,6 @@
 		}else{
             $errMsg .= 'Correo y/o contraseña no válido';
             echo $errMsg;
-            header("Location: ../../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+            header("Location: ../../../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
 		}
 ?>
