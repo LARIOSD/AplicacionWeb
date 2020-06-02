@@ -13,11 +13,11 @@ if(isset($_FILES['image'])){
 
 $cantidad_producto = $_POST["cantidad"];
 $precio_producto = $_POST["precio"];
-$estado_producto = $_POST["estado"];
+$estado_producto = 1;
 $idtipo_producto = $_POST["idtipoproducts"];
 
 $producto = new Producto(
-        null,
+        $id,
         $nombre_producto,
         $descripcion_producto,
         $imagen_producto,
@@ -33,7 +33,8 @@ if($respuesta!=null){
     echo "error 1";
     header("Location:../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
-    header("Location:../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    echo "error 2";
+    //header("Location:../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

@@ -6,7 +6,7 @@ if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../login.php");
 }
 
-    
+
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
 require_once(__DIR__ . "/../../Model/entities/producto.php");
 $producto = leerProducto();
@@ -180,14 +180,14 @@ $producto = leerProducto();
                                                     <td> <?php echo $aux['nombre']; ?> </td>
                                                     <td> <?php echo $aux['descripcion']; ?> </td>
                                                     <td> <img width="100px" height="100px" src="data:image/jpg;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
-                                                    <td> <?php echo $aux['cantidad']; ?> </td>
-                                                    <td> <?php echo $aux['precio']; ?> </td>
+                                                    <td> <i class="fas fa-cubes"></i> <?php echo $aux['cantidad']; ?> </td>
+                                                    <td> <i class="fas fa-dollar-sign"></i> <?php echo $aux['precio']; ?> </td>
                                                     <td> <?php echo $aux['estado']; ?> </td>
                                                     <td> <?php echo $aux['idtipoproducts']; ?> </td>
 
                                                     <td>
-                                                    <button href="" id="modificarProduct" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
-                                                    <i class="fas fa-pencil-alt"></i>
+                                                        <button href="" id="modificarProduct" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
+                                                            <i class="fas fa-pencil-alt"></i>
                                                         </button>
                                                     </td>
 
@@ -247,6 +247,7 @@ $producto = leerProducto();
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div class="columnas">
 
                             <div id="datos" class="modal-body mx-2" style="display: inline-block">
@@ -289,42 +290,31 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-apple-alt"></i>
                                     </span>
-                                    <select name="idtipoproducts" class="form-control" >
+                                    <select name="idtipoproducts" class="form-control">
                                         <option value="1">Fruta</option>
                                         <option value="2">Verdura</option>
                                         <option value="3">Lacteo</option>
                                     </select>
                                 </div>
-
-                                <!--Estado-->
-                                <br>
-                                <div id="datosProductos" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-apple-alt"></i>
-                                    </span>
-                                    <select name="estado" class="form-control">
-                                        <option value="1">si</option>
-                                        <option value="2">no</option>
-
-                                    </select>
-                                </div>
-
-                                <div id="image" class="modal-body mx-2" style="text-align:center">
-                                    <!--Imagen-->
-                                    <div class="vistaPrevia">
-                                        <img id="img" src="img/producto.jpg" alt="TU imagen">
-                                    </div>
-                                    <!--Imagen-->
-                                    <div class="btn btn-success btn-icon-split">
-                                        <input id="subirImg" type="file" name="image">
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button form="crear" type="submit" value="Enviar" class="btn btn-success">Agregar</button>
+
+                            <div id="image" class="modal-body mx-2" style="text-align:center">
+                                <!--Imagen-->
+                                <div class="vistaPrevia">
+                                    <img id="img" src="img/producto.jpg" alt="TU imagen">
+                                </div>
+                                <!--Imagen-->
+                                <div class="btn btn-success btn-icon-split">
+                                    <input id="subirImg" type="file" name="image">
+                                </div>
                             </div>
+
                         </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button form="crear" type="submit" value="Enviar" class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -333,7 +323,7 @@ $producto = leerProducto();
         <!--Modificar producto modal-->
         <div class="modal fade" id="modificar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/producto/act_moduprod.php " method="POST">
+                <form id="modificar" action="../../controller/actions/producto/act_modprod.php " method="POST">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
@@ -341,22 +331,78 @@ $producto = leerProducto();
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                                <i class="fas fa-user prefix grey-text"></i>
-                                <input type="text" name="nombre" id="orangeForm-name" class="form-control validate" placeholder="User Name">
-                            </div>
-                            <div class="md-form mb-5">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" name="correo" id="orangeForm-email" class="form-control validate" placeholder="Email">
+
+                        <div class="columnas">
+
+                            <div id="datos" class="modal-body mx-2" style="display: inline-block">
+
+                                <!--Id-->
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-fingerprint"></i>
+                                    </span>
+                                    <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                </div>
+
+                                <!--Nombre-->
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fab fa-amilia"></i>
+                                    </span>
+                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
+                                </div>
+
+                                <!--Descripcion-->
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-align-right"></i>
+                                    </span>
+                                    <input type="text" name="descripcion" class="form-control validate" placeholder="Descripcion" required>
+                                </div>
+
+                                <!--Precio-->
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                    </span>
+                                    <input type="number" name="precio" class="form-control validate" placeholder="Precio" min="100" required>
+                                </div>
+
+                                <!--Cantidad-->
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                    <input type="number" name="cantidad" class="form-control validate" placeholder="Cantidad" min="1" required>
+                                </div>
+
+                                <!--Tipo-->
+                                <br>
+                                <div id="datosProductos" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-apple-alt"></i>
+                                    </span>
+                                    <select name="idtipoproducts" class="form-control">
+                                        <option value="1">Fruta</option>
+                                        <option value="2">Verdura</option>
+                                        <option value="3">Lacteo</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="md-form mb-4">
-                                <i class="fas fa-lock prefix grey-text"></i>
-                                <input type="password" name="password" id="orangeForm-pass" class="form-control validate" placeholder="Password">
+                            <div id="image" class="modal-body mx-2" style="text-align:center">
+                                <!--Imagen-->
+                                <div class="vistaPrevia">
+                                    <img id="imga" src="img/producto.jpg" alt="TU imagen">
+                                </div>
+                                <!--Imagen-->
+                                <div class="btn btn-primary btn-icon-split">
+                                    <input id="subirImga" type="file" name="image">
+                                </div>
                             </div>
 
                         </div>
+
                         <div class="modal-footer d-flex justify-content-center">
                             <button form="modificar" type="submit" value="Enviar" class="btn btn-primary">Modificar</button>
                         </div>
@@ -402,8 +448,9 @@ $producto = leerProducto();
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
 
-        <script src="js/vista.js"></script>
-
+        <!--vista Previa de imagenes-->
+        <script src="js/vista_image_crearUser.js"></script>
+        <script src="js/vista_image_modUser.js"></script>
 </body>
 
 </html>
