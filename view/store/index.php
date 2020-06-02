@@ -276,7 +276,6 @@ $producto = leerProducto();
 		</div>
 	</section>
 
-
 	<section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
 		<div class="container">
 			<div class="row justify-content-end">

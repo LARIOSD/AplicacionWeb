@@ -31,10 +31,10 @@ $usuario = new Usuario(
 $respuesta = modificarUsuario($usuario,$id);
 
 if($respuesta!=null){
-    header("Location: ../../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
+    header("Location:../../../view/admin/crud_usuario.php"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
     echo("Usuario no modificado");
-    //header("Location: ../../view/login/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location:../../../view/admin/crud_usuario.php"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

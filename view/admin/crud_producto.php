@@ -23,7 +23,7 @@ $producto = leerProducto();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador </title>
+    <title>Administrador - Productos</title>
     <!-- http://localhost/AplicacionWeb/view/admin/crud_usuario.php -->
 
     <!-- Custom fonts for this template-->
@@ -289,7 +289,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-apple-alt"></i>
                                     </span>
-                                    <select name="idtipoproducts" class="form-control" id="exampleFormControlSelect1">
+                                    <select name="idtipoproducts" class="form-control" >
                                         <option value="1">Fruta</option>
                                         <option value="2">Verdura</option>
                                         <option value="3">Lacteo</option>
@@ -302,7 +302,7 @@ $producto = leerProducto();
                                     <span class="icon text-white-50">
                                         <i class="fas fa-apple-alt"></i>
                                     </span>
-                                    <select name="estado" class="form-control" id="exampleFormControlSelect1">
+                                    <select name="estado" class="form-control">
                                         <option value="1">si</option>
                                         <option value="2">no</option>
 

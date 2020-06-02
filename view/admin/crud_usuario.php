@@ -26,7 +26,7 @@ $usuario = leerUsuarios();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador </title>
+    <title>Administrador - Usuarios</title>
     <!-- http://localhost/AplicacionWeb/view/admin/crud_usuario.php -->
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -416,7 +416,7 @@ $usuario = leerUsuarios();
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button action="../../controller/actions/login/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <button action="../../controller/actions/producto/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>

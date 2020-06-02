@@ -10,6 +10,6 @@ $respuesta = borrarProducto($id);
 if($respuesta!=null){
     header("Location: ../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL USUARIO     
 }else{
-    //header("Location: ../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location: ../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
     echo "error"+ $id;
 }

@@ -41,10 +41,10 @@ if($estado === 1){
 
     $respuesta = insertarUsuario($usuario);
     if($respuesta!=null){
-        header("Location: ../../view/admin/crud_usuario.php?id=1"); // SE CREO UN NUEVO USUARIO
+        header("Location: ../../../view/admin/crud_usuario.php?id=1"); // SE CREO UN NUEVO USUARIO
        //echo json_encode(array('error' => false));
     }else{
-        header("Location: ../../view/admin/crud_usuario.php?id=0"); //NO SE PUEDO CREAR EL USUARIO
+        header("Location: ../../../view/admin/crud_usuario.php?id=0"); //NO SE PUEDO CREAR EL USUARIO
        //echo json_encode(array('error' => true));
     }
 }
