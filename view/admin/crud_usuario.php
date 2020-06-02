@@ -178,7 +178,13 @@ $usuario = leerUsuarios();
                                                 <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['imagen']); ?>" class="foto2"> </td>
                                                 <td> <?php echo $aux['nombre']; ?> </td>
                                                 <td> <?php echo $aux['correo']; ?> </td>
-                                                <td> <?php echo $aux['tipo']; ?> </td>
+                                                <td> <?php if (1 == $aux['tipo']){
+                                                                echo "Administrador";
+                                                            }else {
+                                                                echo "Usuario";
+                                                                }
+                                                        ?> 
+                                                </td>
                                                 <td>
                                                     <button href="" id="modificarUser" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
                                                         <i class="fas fa-user-edit"></i>

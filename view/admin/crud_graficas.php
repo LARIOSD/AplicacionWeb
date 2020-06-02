@@ -5,8 +5,6 @@ if ($_SESSION['ID_TIPO'] == 2) {
 } else if ($_SESSION['ID_TIPO'] != 1) {
     header("Location:../login.php");
 }
-
-
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
 require_once(__DIR__ . "/../../Model/entities/producto.php");
 $producto = leerProducto();
@@ -167,12 +165,45 @@ $producto = leerProducto();
 
                         </div>
 
+
+<?php
+$lacteo = 0; $verduras = 0; $frutas = 0; $total = 0;
+$prod = array();
+
+foreach ($producto as $aux) :
+    $total += 1;    
+    if( 1 == $aux['idtipoproducts']){
+        $lacteo += 1;
+    }elseif (2 == $aux['idtipoproducts'] ) {
+        $verduras +=1;
+    }else{
+        $frutas += 1;
+    }
+endforeach;
+
+function procentaje($tipo,$total)
+{
+    $valorPorcentaje = ($tipo / $total)*100;
+
+    return $valorPorcentaje;
+}
+
+array_push($prod,procentaje($lacteo,$total));
+array_push($prod,procentaje($verduras,$total));
+array_push($prod,procentaje($frutas,$total));
+?>
+
+<div id='tipo_0' class='producto' data-producto='<?php echo $total ?>'> </div>
+<div id='tipo_1' class='producto' data-producto='<?php echo $prod[0]; ?>'> </div>
+<div id='tipo_2' class='producto' data-producto='<?php echo $prod[1]; ?>'> </div>
+<div id='tipo_3' class='producto' data-producto='<?php echo $prod[2]; ?>'> </div>
+
                         <!-- Donut Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Frafica de torta</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafica de torta</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -180,7 +211,9 @@ $producto = leerProducto();
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.
+                                    Porcentaje de productos existentes por tipo. 
+                                    <br>
+                                    Frutas, Lacteos y Verduras.
                                 </div>
                             </div>
                         </div>

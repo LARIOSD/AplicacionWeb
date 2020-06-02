@@ -133,8 +133,83 @@ $producto = leerProducto();
                 </nav>
                 <!-- End of Topbar -->
 
+<?php
+$lacteo = 0; $verduras = 0; $frutas = 0; $total = 0;
+$prod = array();
+
+foreach ($producto as $aux) :
+    $total += 1;    
+    if( 1 == $aux['idtipoproducts']){
+        $lacteo += 1;
+    }elseif (2 == $aux['idtipoproducts'] ) {
+        $verduras +=1;
+    }else{
+        $frutas += 1;
+    }
+endforeach;
+
+function procentaje($tipo,$total)
+{
+    $valorPorcentaje = ($tipo / $total)*100;
+
+    return $valorPorcentaje;
+}
+
+array_push($prod,procentaje($lacteo,$total));
+array_push($prod,procentaje($verduras,$total));
+array_push($prod,procentaje($frutas,$total));
+?>
+
+<div id='tipo_0' class='producto' data-producto='<?php echo $total ?>'> </div>
+<div id='tipo_1' class='producto' data-producto='<?php echo $prod[0]; ?>'> </div>
+<div id='tipo_2' class='producto' data-producto='<?php echo $prod[1]; ?>'> </div>
+<div id='tipo_3' class='producto' data-producto='<?php echo $prod[2]; ?>'> </div>
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!--Inicio row -->
+                    <div class="row">
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafica Circular</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Porcentaje de productos existentes por tipo.
+                                    <br>
+                                    Frutas, Lacteos y Verduras.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--Inicio columnas grafica-->
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafica de barras</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <!--Fin columnas grafica -->
+                    </div>
+                    <!--Fin row -->
 
                     <!--Tabla de productos-->
                     <div class="card shadow mb-4">
@@ -184,9 +259,21 @@ $producto = leerProducto();
                                                 <td> <img width="100px" height="100px" src="data:image/jpg;base64,<?php echo base64_encode($aux['image']); ?>" class="foto2"> </td>
                                                 <td> <i class="fas fa-cubes"></i> <?php echo $aux['cantidad']; ?> </td>
                                                 <td> <i class="fas fa-dollar-sign"></i> <?php echo $aux['precio']; ?> </td>
-                                                <td> <?php echo $aux['estado']; ?> </td>
-                                                <td> <?php echo $aux['idtipoproducts']; ?> </td>
-
+                                                <td> <?php if (1== $aux['estado']){
+                                                                echo "Disponible";
+                                                            }else {
+                                                                echo "Agotado";
+                                                                }
+                                                        ?> 
+                                                </td>
+                                                <td> <?php if (1 == $aux['idtipoproducts']) {
+                                                                echo "Lacteo";
+                                                            }elseif (2 == $aux['idtipoproducts']){
+                                                                echo "Verdura";
+                                                            }else {
+                                                                echo "Fruta";
+                                                            }
+                                                        ?>
                                                 <td>
                                                     <button href="" id="modificarProduct" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
                                                         <i class="fas fa-pencil-alt"></i>
@@ -293,9 +380,9 @@ $producto = leerProducto();
                                     <i class="fas fa-apple-alt"></i>
                                 </span>
                                 <select name="idtipoproducts" class="form-control">
-                                    <option value="1">Fruta</option>
+                                    <option value="3">Fruta</option>
                                     <option value="2">Verdura</option>
-                                    <option value="3">Lacteo</option>
+                                    <option value="1">Lacteo</option>
                                 </select>
                             </div>
                         </div>
@@ -456,6 +543,16 @@ $producto = leerProducto();
     <!--vista Previa de imagenes-->
     <script src="js/vista_image_crearUser.js"></script>
     <script src="js/vista_image_modUser.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
+
 </body>
 
 </html>
+

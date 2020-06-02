@@ -2,14 +2,18 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+var prod_1 = $('#tipo_1').data('producto');
+var prod_2 = $('#tipo_2').data('producto');
+var prod_3 = $('#tipo_3').data('producto');
+
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["Lacteos %", "Verduras %", "Frutas %"],
     datasets: [{
-      data: [55, 30, 15],
+      data: [prod_1,prod_2,prod_3],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",

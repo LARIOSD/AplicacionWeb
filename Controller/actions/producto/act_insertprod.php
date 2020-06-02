@@ -14,6 +14,19 @@ $precio_producto = $_POST["precio"];
 $estado_producto = 1;
 $idtipo_producto = $_POST["idtipoproducts"];
 
+$producto = leerProducto();
+$estado = 0;
+foreach ($producto as $aux) :
+    if($nombre_producto === $aux['nombre']){
+        $estado = 1;
+    }
+endforeach;
+
+
+if($estado === 1){
+    header("Location:../../../view/admin/crud_producto.php");//NO SE PUDO REGISTRAR EL producto PORQUE YA EXISTE
+    //echo json_encode(array('existe' => true));
+}else{
 $producto = new Producto(
         null,
         $nombre_producto,
@@ -32,6 +45,7 @@ if($respuesta!=null){
     header("Location:../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
     header("Location:../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
+}
 }
 
 ?>
