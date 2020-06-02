@@ -43,7 +43,7 @@ if (isset($_SESSION['ID_TIPO'])) {
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" action="../../controller/actions/act_register.php" method="POST">
+              <form class="user" action="../../controller/actions/login/act_register.php" method="POST">
                 <!--Nombre -->
                 <div class="form-group">
                   <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name" required>

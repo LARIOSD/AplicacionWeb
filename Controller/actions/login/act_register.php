@@ -9,7 +9,7 @@ $password = $_POST['password'];
 $tipo = 2;
 $telefono = $_POST['telefono'];
 $direccion = $_POST['direccion'];
-
+$imagen = "";
 if (isset($_FILES['Imagen'])) {
     $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
 }
@@ -23,7 +23,7 @@ foreach ($usuarios as $aux) :
 endforeach;
 
 if ($estado === 1) {
-    //  header("Location: ../../view/register.php?id=0"); //NO SE PUDO REGISTRAR EL USUARIO PORQUE EL CORREO YA EXISTE
+     header("Location: ../../view/login/register.php?id=0"); //NO SE PUDO REGISTRAR EL USUARIO PORQUE EL CORREO YA EXISTE
     echo json_encode(array('existe' => true));
 } else {
     if (!empty($_POST['correo']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
@@ -47,10 +47,10 @@ if ($estado === 1) {
 
 if (isset($respuesta)) {
     if ($respuesta != null) {
-        // header("Location: ../../view/register.php"); // ENVIAR AL LOGIN DE USUARIO
-        echo json_encode(array('error' => false));
+         header("Location: ../../view/login/register.php"); // ENVIAR AL LOGIN DE USUARIO
+  //      echo json_encode(array('error' => false));
     } else {
-        // header("Location: ../../view/register.php"); //ENVIAR AL REGISTER NUEVAMENTE
-        echo json_encode(array('error' => true));
+         header("Location: ../../view/login/register.php"); //ENVIAR AL REGISTER NUEVAMENTE
+//        echo json_encode(array('error' => true));
     }
 }
