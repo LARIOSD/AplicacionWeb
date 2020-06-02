@@ -35,11 +35,15 @@ $usuario = leerUsuarios();
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
     <!-- Modificaciones adicionales-->
     <link href="css/style_usuario.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="js/sweetalert.js" ></script> 
+    <script src="js/sweetalert.js"></script>
 
 </head>
 
@@ -84,9 +88,9 @@ $usuario = leerUsuarios();
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="crud_graficas.php">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Otros</span></a>
+                    <span>Graficas</span></a>
             </li>
 
 
@@ -133,324 +137,323 @@ $usuario = leerUsuarios();
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <!--Tabla de usuarios-->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">Tabla de usuarios</h4>
 
-                    <div class="container">
-
-                        <!--Tabla de usuarios-->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h4 class="m-0 font-weight-bold text-primary">Tabla de usuarios</h4>
-
-                                <!--Boton crear Usuario -->
-                                <div class="text-right">
-                                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#Crear_usuario">
-                                        <i class="fas fa-user-plus"></i>
-                                    </a>
-                                </div>
-
+                            <!--Boton crear Usuario -->
+                            <div class="text-right">
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#Crear_usuario">
+                                    <i class="fas fa-user-plus"></i>
+                                </a>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="th-sm">ID
+                                            </th>
+                                            <th class="th-sm">Foto
+                                            </th>
+                                            <th class="th-sm">Name
+                                            </th>
+                                            <th class="th-sm">Email
+                                            </th>
+                                            <th class="th-sm">Tipo
+                                            </th>
+                                            <th class="th-sm">Edit
+                                            </th>
+                                            <th class="th-sm">Delete
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($usuario as $aux) :  ?>
                                             <tr>
-                                                <th class="th-sm">ID
-                                                </th>
-                                                <th class="th-sm">Foto
-                                                </th>
-                                                <th class="th-sm">Name
-                                                </th>
-                                                <th class="th-sm">Email
-                                                </th>
-                                                <th class="th-sm">Tipo
-                                                </th>
-                                                <th class="th-sm">Edit
-                                                </th>
-                                                <th class="th-sm">Delete
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($usuario as $aux) :  ?>
-                                                <tr>
-                                                    <td> <?php echo $aux['id']; ?></td>
-                                                    <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['imagen']); ?>" class="foto2"> </td>
-                                                    <td> <?php echo $aux['nombre']; ?> </td>
-                                                    <td> <?php echo $aux['correo']; ?> </td>
-                                                    <td> <?php echo $aux['tipo']; ?> </td>
-                                                    <td>
-                                                        <button href="" id="modificarUser" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
-                                                            <i class="fas fa-user-edit"></i>
+                                                <td> <?php echo $aux['id']; ?></td>
+                                                <td> <img width="100px" height="100px" src="data:image/JPG;base64,<?php echo base64_encode($aux['imagen']); ?>" class="foto2"> </td>
+                                                <td> <?php echo $aux['nombre']; ?> </td>
+                                                <td> <?php echo $aux['correo']; ?> </td>
+                                                <td> <?php echo $aux['tipo']; ?> </td>
+                                                <td>
+                                                    <button href="" id="modificarUser" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
+                                                        <i class="fas fa-user-edit"></i>
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <form action="../../controller/actions/usuario/act_Elimuser.php" method="POST">
+                                                        <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
+                                                        <button id="eliminarUser" type="submit" href="" class="btn btn-danger">
+                                                            <i class="fas fa-user-minus"></i>
                                                         </button>
-                                                    </td>
-                                                    <td>
-                                                        <form action="../../controller/actions/usuario/act_Elimuser.php" method="POST">
-                                                            <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
-                                                            <button id="eliminarUser" type="submit" href="" class="btn btn-danger">
-                                                                <i class="fas fa-user-minus"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
                     </div>
-                    <!-- /.container-fluid -->
-
                 </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2019</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Content -->
 
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!--Crear Usuario modal-->
-        <div class="modal fade" id="Crear_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <form id="crear" action="../../controller/actions/usuario/act_insertuser.php" method="POST" enctype="multipart/form-data">
-                    <div class="modal-content">
-
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Crear Usuario</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="columnas">
-                            <div id="datos" class="modal-body mx-2" style="display: inline-block">
-
-                                <!--Nombre-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
-                                </div>
-
-                                <!--Correo-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-envelope prefix grey-text"></i>
-                                    </span>
-                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" required>
-                                </div>
-
-                                <!--Telefono-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-phone"></i>
-                                    </span>
-                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" required>
-                                </div>
-
-                                <!--Direccion-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-street-view"></i>
-                                    </span>
-                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" required>
-                                </div>
-
-                                <!--Tipo-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <select name="tipo" class="form-control" id="exampleFormControlSelect1">
-                                        <option value="1">Administrador</option>
-                                        <option value="2">Usuario</option>
-                                    </select>
-                                </div>
-
-                                <!--Password-->
-                                <div id="datosUsuario" class="btn btn-success btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                    <input type="password" name="password" class="form-control validate" placeholder="Password" required>
-                                </div>
-                            </div>
-
-                            <div id="image" class="modal-body mx-2" style="text-align:center">
-                                <!--Imagen-->
-                                <div class="vistaPrevia">
-                                    <img id="img" src="img/image.png" alt="TU imagen">
-                                </div>
-                                <!--Imagen-->
-                                <div class="btn btn-success btn-icon-split">
-                                    <input id="subirImg" type="file" name="Imagen" >
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button form="crear" type="submit" value="Enviar" class="btn btn-success">Crear</button>
-                        </div>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
                     </div>
-                </form>
-            </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
-        <!--fin crear Usuario modal-->
+        <!-- End of Content Wrapper -->
 
-        <!--Modificar Usuario modal-->
-        <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/usuario/act_Moduser.php" method="POST">
-                    <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="columnas">
-                            <div id="datos" class="modal-body mx-3" style="display: inline-block">
+    </div>
+    <!-- End of Page Wrapper -->
 
-                                <!--Id-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-fingerprint"></i>
-                                    </span>
-                                    <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                                </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-                                <!--Nombre-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" >
-                                </div>
-
-                                <!--Correo-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-envelope prefix grey-text"></i>
-                                    </span>
-                                    <input type="email" name="correo" class="form-control validate" placeholder="Email" >
-                                </div>
-
-                                <!--Telefono-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-phone"></i>
-                                    </span>
-                                    <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" >
-                                </div>
-
-                                <!--Direccion-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-street-view"></i>
-                                    </span>
-                                    <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" >
-                                </div>
-
-                                <!--Tipo-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <select name="tipo" class="form-control" id="exampleFormControlSelect1">
-                                        <option value="1">Administrador</option>
-                                        <option value="2">Usuario</option>
-                                    </select>
-                                </div>
-
-                                <!--Password-->
-                                <div id="datosUsuario" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                    <input type="password" name="password" class="form-control validate" placeholder="Password" >
-                                </div>
-                            </div>
-
-                            <div id="image" class="modal-body mx-2" style="text-align:center">
-                                <!--Imagen-->
-                                <div class="vistaPrevia">
-                                    <img id="imga" src="img/image.png" alt="TU imagen">
-                                </div>
-                                <!--Imagen-->
-                                <div class="btn btn-primary btn-icon-split">
-                                    <input id="subirImga" type="file" name="Imagen" >
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button form="modificar" type="submit" value="Enviar" class="btn btn-primary">Modificar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!--fin Modificar Usuario modal -->
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+    <!--Crear Usuario modal-->
+    <div class="modal fade" id="Crear_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form id="crear" action="../../controller/actions/usuario/act_insertuser.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button action="../../controller/actions/producto/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Crear Usuario</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../../Controller/actions/login/act_logout.php">Logout</a>
+                    <div class="columnas">
+                        <div id="datos" class="modal-body mx-2" style="display: inline-block">
+
+                            <!--Nombre-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="nombre" class="form-control validate" placeholder="Nombre" required>
+                            </div>
+
+                            <!--Correo-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                </span>
+                                <input type="email" name="correo" class="form-control validate" placeholder="Email" required>
+                            </div>
+
+                            <!--Telefono-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <input type="text" name="telefono" class="form-control validate" placeholder="Telefono" required>
+                            </div>
+
+                            <!--Direccion-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-street-view"></i>
+                                </span>
+                                <input type="text" name="direccion" class="form-control validate" placeholder="Dirección" required>
+                            </div>
+
+                            <!--Tipo-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <select name="tipo" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Usuario</option>
+                                </select>
+                            </div>
+
+                            <!--Password-->
+                            <div id="datosUsuario" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control validate" placeholder="Password" required>
+                            </div>
+                        </div>
+
+                        <div id="image" class="modal-body mx-2" style="text-align:center">
+                            <!--Imagen-->
+                            <div class="vistaPrevia">
+                                <img id="img" src="img/image.png" alt="TU imagen">
+                            </div>
+                            <!--Imagen-->
+                            <div class="btn btn-success btn-icon-split">
+                                <input id="subirImg" type="file" name="Imagen">
+                            </div>
+                        </div>
+
                     </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button form="crear" type="submit" value="Enviar" class="btn btn-success">Crear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--fin crear Usuario modal-->
+
+    <!--Modificar Usuario modal-->
+    <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form id="modificar" action="../../controller/actions/usuario/act_Moduser.php" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="columnas">
+                        <div id="datos" class="modal-body mx-3" style="display: inline-block">
+
+                            <!--Id-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-fingerprint"></i>
+                                </span>
+                                <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                            </div>
+
+                            <!--Nombre-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" name="nombre" class="form-control validate" placeholder="Nombre">
+                            </div>
+
+                            <!--Correo-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                </span>
+                                <input type="email" name="correo" class="form-control validate" placeholder="Email">
+                            </div>
+
+                            <!--Telefono-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <input type="text" name="telefono" class="form-control validate" placeholder="Telefono">
+                            </div>
+
+                            <!--Direccion-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-street-view"></i>
+                                </span>
+                                <input type="text" name="direccion" class="form-control validate" placeholder="Dirección">
+                            </div>
+
+                            <!--Tipo-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <select name="tipo" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Usuario</option>
+                                </select>
+                            </div>
+
+                            <!--Password-->
+                            <div id="datosUsuario" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control validate" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <div id="image" class="modal-body mx-2" style="text-align:center">
+                            <!--Imagen-->
+                            <div class="vistaPrevia">
+                                <img id="imga" src="img/image.png" alt="TU imagen">
+                            </div>
+                            <!--Imagen-->
+                            <div class="btn btn-primary btn-icon-split">
+                                <input id="subirImga" type="file" name="Imagen">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button form="modificar" type="submit" value="Enviar" class="btn btn-primary">Modificar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--fin Modificar Usuario modal -->
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button action="../../controller/actions/producto/act_logout.php" class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="../../Controller/actions/login/act_logout.php">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!--SweetAlert2-->
-        
-        <!--vista Previa de imagenes-->
-        <script src="js/vista_image_crearUser.js"></script>
-        <script src="js/vista_image_modUser.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+    <!--SweetAlert2-->
+
+    <!--vista Previa de imagenes-->
+    <script src="js/vista_image_crearUser.js"></script>
+    <script src="js/vista_image_modUser.js"></script>
 
 </body>
 

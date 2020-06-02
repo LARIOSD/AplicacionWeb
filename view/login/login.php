@@ -22,6 +22,8 @@ if(isset($_SESSION['ID_TIPO'])){
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <meta name="google-signin-client_id" content="proyect-web-store">
+
   <title>Login</title>
 
   <!-- Custom fonts for this template-->
@@ -111,6 +113,10 @@ if(isset($_SESSION['ID_TIPO'])){
 
   <!-- Custom scripts for all pages-->
   <script src="../admin/js/sb-admin-2.min.js"></script>
+
+  <!--Google login-->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 </body>
 
