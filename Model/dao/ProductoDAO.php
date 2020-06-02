@@ -82,7 +82,7 @@ class ProductoDAO
     {
         $data_source = new DataSource();
         $sql = "UPDATE products SET nombre= :nombre, descripcion= :descripcion, image= :image, 
-        cantidad= :cantidad,precio= :precio,  estado= :estado, idtipoproducts= :idtipoproducts where idproducts = $idproducts";
+        cantidad= :cantidad,precio= :precio,  estado= :estado, idtipoproducts= :idtipoproducts where idproducts = :idproducts";
 
         $resultado = $data_source->ejecutarActualizacion(
             $sql,

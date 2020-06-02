@@ -323,7 +323,7 @@ $producto = leerProducto();
         <!--Modificar producto modal-->
         <div class="modal fade" id="modificar_producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="modificar" action="../../controller/actions/producto/act_modprod.php " method="POST">
+                <form id="modificar" action="../../controller/actions/producto/act_modprod.php " method="POST"  enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
