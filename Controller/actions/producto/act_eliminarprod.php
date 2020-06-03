@@ -8,8 +8,8 @@ $id = $_POST['id'];
 $respuesta = borrarProducto($id);
 
 if($respuesta!=null){
-    header("Location: ../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL USUARIO     
+    header("Location: ../../../view/admin/crud_producto.php?id=0"); // ENVIAR AL HOMEPAGES DEL USUARIO     
 }else{
-    header("Location: ../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location: ../../../view/admin/crud_producto.php?id=-1"); //ENVIAR AL LOGIN NUEVAMENTE
     echo "error"+ $id;
 }

@@ -31,10 +31,10 @@ $producto = new Producto(
 $respuesta = modificarProducto($producto,$id);
 if($respuesta!=null){
     echo "error 1";
-    header("Location:../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
+    header("Location:../../../view/admin/crud_producto.php?id=4"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
     echo "error 2";
-    //header("Location:../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location:../../../view/admin/crud_producto.php?id=5"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 
 ?>

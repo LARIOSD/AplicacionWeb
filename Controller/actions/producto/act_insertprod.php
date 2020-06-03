@@ -24,7 +24,7 @@ endforeach;
 
 
 if($estado === 1){
-    header("Location:../../../view/admin/crud_producto.php");//NO SE PUDO REGISTRAR EL producto PORQUE YA EXISTE
+    header("Location:../../../view/admin/crud_producto.php?id=1");//NO SE PUDO REGISTRAR EL producto PORQUE YA EXISTE
     //echo json_encode(array('existe' => true));
 }else{
 $producto = new Producto(
@@ -42,9 +42,9 @@ $producto = new Producto(
 $respuesta = insertarProducto($producto);
 if($respuesta!=null){
     echo "error 1";
-    header("Location:../../../view/admin/crud_producto.php"); // ENVIAR AL HOMEPAGES DEL producto$producto
+    header("Location:../../../view/admin/crud_producto.php?id=2"); // ENVIAR AL HOMEPAGES DEL producto$producto
 }else{
-    header("Location:../../../view/admin/crud_producto.php"); //ENVIAR AL LOGIN NUEVAMENTE
+    header("Location:../../../view/admin/crud_producto.php?id=3"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 }
 

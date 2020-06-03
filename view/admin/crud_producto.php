@@ -10,6 +10,12 @@ if ($_SESSION['ID_TIPO'] == 2) {
 require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
 require_once(__DIR__ . "/../../Model/entities/producto.php");
 $producto = leerProducto();
+
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    echo "<script>console.log($id);</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,7 @@ $producto = leerProducto();
 </head>
 
 <body id="page-top">
-
+<div id='val' class='estado' data-estado='<?php echo $id ?>'> </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -551,7 +557,8 @@ array_push($prod,procentaje($frutas,$total));
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 
 </html>
