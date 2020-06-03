@@ -13,9 +13,7 @@
             $_SESSION['Tipo'] = $user->getTipo();
             $tipo2= $user->getTipo();
             if($tipo!= $tipo2){
-                $errMsg .= 'Tipo de acceso no valido.';
-                echo $errMsg;
-                header("Location: ../../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+                header("Location: ../../../view/login/login.php?id=1"); //ENVIAR AL LOGIN NUEVAMENTE tipo de acceso no valido
             }else{
                 $_SESSION['ID_TIPO'] = $user->getTipo();
                 $_SESSION['ID_USUARIO'] = $user->getId();
@@ -28,8 +26,6 @@
             }           
             
 		}else{
-            $errMsg .= 'Correo y/o contraseña no válido';
-            echo $errMsg;
-            header("Location: ../../../../view/login.php"); //ENVIAR AL LOGIN NUEVAMENTE
+            header("Location: ../../../view/login/login.php?id=2"); //ENVIAR AL LOGIN NUEVAMENTE correo o contraseña invalido
 		}
 ?>

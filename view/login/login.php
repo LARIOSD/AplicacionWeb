@@ -8,6 +8,10 @@ if(isset($_SESSION['ID_TIPO'])){
   }
 }
 
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+  echo "<script>console.log($id);</script>";
+}
 
 ?>
 
@@ -32,10 +36,13 @@ if(isset($_SESSION['ID_TIPO'])){
 
   <!-- Custom styles for this template-->
   <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
 <body class="bg-gradient-primary">
+
+<div id='val' class='estado' data-estado='<?php echo $id ?>'> </div>
 
   <div class="container">
 
@@ -117,6 +124,8 @@ if(isset($_SESSION['ID_TIPO'])){
   <!--Google login-->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="sweetalert_login.js"></script>
 
 </body>
 

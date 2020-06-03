@@ -13,7 +13,7 @@ if(id === 2){
     title: "Oops...",
     text: "¡Las contraseñas no son iguales, por favor intente nuevamente!",
   });
-}else{
+}else if(id===0){
   swal({
     icon: "error",
     title: "Oops...",
