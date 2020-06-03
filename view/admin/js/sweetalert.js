@@ -1,72 +1,43 @@
-function correcto() {
-  Swal.fire({
+var id = $('#val').data('estado');
+
+
+if(id == 0){
+  swal({
     icon: "success",
     title: "Bien echo",
-    text: "Accion realizado con exito",
+    text: "Se elimino el usuario exitosamente",
   });
-}
-
-function error() {
-  Swal.fire({
+}else if(id==1){
+  swal({
     icon: "error",
     title: "Oops...",
-    text: "¡Algo salió mal!",
+    text: "¡Este correo ya se encuentra registrado, por favor intente nuevamente!",
   });
-}
-
-function correctoTime() {
-  Swal.fire({
+}else if(id==2){
+  swal({
     icon: "success",
-    title: "Accion realizada con exito",
-    showConfirmButton: false,
-    timer: 1500,
+    title: "Felicitaciones!",
+    text: "¡El usuario se creo Exitosamente!",
   });
-}
-
-function errorTime() {
-  Swal.fire({
+}else if(id==3){
+  swal({
     icon: "error",
-    title: "¡Algo salió mal!",
-    showConfirmButton: false,
-    timer: 1500,
+    title: "Oops...",
+    text: "¡No se pudo crear el usuario, por favor intente nuevamente!",
+  });
+}else if(id==4){
+  swal({
+    icon: "success",
+    title: "Felicitaciones!",
+    text: "¡El usuario se edito Exitosamente!",
+  });
+}else if(id==5){
+  swal({
+    icon: "error",
+    title: "Oops...",
+    text: "¡No se pudo editar el usuario, por favor intente nuevamente!",
   });
 }
 
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger",
-  },
-  buttonsStyling: false,
-});
 
-function opcion() {
-  swalWithBootstrapButtons
-    .fire({
-      title: "Estas seguro?",
-      text: "No podrás revertir esto!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Si, Eliminar!",
-      cancelButtonText: "No, Cancelar!",
-      reverseButtons: true,
-    })
-    .then((result) => {
-      if (result.value) {
-        swalWithBootstrapButtons.fire(
-          "Eliminado!",
-          "Su archivo ha sido eliminado.",
-          "success"
-        );
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          "Cancelado",
-          "Tu archivo está seguro :)",
-          "error"
-        );
-      }
-    });
-}
+

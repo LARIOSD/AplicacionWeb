@@ -12,6 +12,12 @@ require_once(__DIR__ . "/../../Model/entities/Usuario.php");
 //require_once(__DIR__ . "/../../Model/dao/DataSource.php");
 
 $usuario = leerUsuarios();
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    echo "<script>console.log($id);</script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,13 +48,12 @@ $usuario = leerUsuarios();
     <!-- Modificaciones adicionales-->
     <link href="css/style_usuario.css" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="js/sweetalert.js"></script>
-
 </head>
 
 
 <body id="page-top">
+    
+<div id='val' class='estado' data-estado='<?php echo $id ?>'> </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -460,7 +465,8 @@ $usuario = leerUsuarios();
     <!--vista Previa de imagenes-->
     <script src="js/vista_image_crearUser.js"></script>
     <script src="js/vista_image_modUser.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/sweetalert.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,11 @@ if (isset($_SESSION['ID_TIPO'])) {
     header("Location:../view/admin/crud_usuario.php");
   }
 }
+
+if(isset($_GET['id'])){
+  $id = $_GET['id'];
+  echo "<script>console.log($id);</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,11 +32,13 @@ if (isset($_SESSION['ID_TIPO'])) {
   <!-- Custom styles for this template-->
   <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="../js/sweetalert.js"></script>
 
 </head>
 
 <body class="bg-gradient-primary">
+
+<div id='val' class='estado' data-estado='<?php echo $id ?>'> </div>
+
   <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -43,7 +50,7 @@ if (isset($_SESSION['ID_TIPO'])) {
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" action="../../controller/actions/login/act_register.php" method="POST">
+              <form class="user" action="../../Controller/actions/login/act_register.php" method="POST">
                 <!--Nombre -->
                 <div class="form-group">
                   <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="User Name" required>
@@ -108,51 +115,8 @@ if (isset($_SESSION['ID_TIPO'])) {
   <script src="../admin/vendor/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for all pages-->
   <script src="../admin/js/sb-admin-2.min.js"></script>
-
-
-
-  <script>
-    $(document).on("submit", "#formrg", function(e) {
-      e.preventDefault();
-      jQuery.ajax({
-        url: '../Controller/actions/act_register.php',
-        type: 'POST',
-        dataType: 'json',
-        data: $("#formrg").serialize(),
-        beforeSend: function() {}
-      }).done(function(respuesta) {
-        if (!respuesta.existe) {
-          if (!respuesta.error) {
-            Swal.fire({
-              type: 'sucess',
-              title: '¡Correcto!',
-              text: 'Se ha registrado correctamente',
-              timer: 2000
-            })
-            setTimeout(function() {
-              window.location.href = "register.php";
-            }, 2500);
-          } else {
-            Swal.fire({
-              type: 'error',
-              title: '¡ERROR!',
-              text: 'Ocurrió un error al registrarse',
-              timer: 1500
-            })
-          }
-        } else {
-          Swal.fire({
-            type: 'error',
-            title: '¡ERROR!',
-            text: 'El usuario ya existe, por favor ingrese un correo diferente.',
-            timer: 1500
-          })
-        }
-      }).fail(function(respuesta) {
-        document.write(respuesta.responseText);
-      }).always(function() {});
-    });
-  </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="sweetalert.js"></script>
 </body>
 
 </html>
