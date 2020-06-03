@@ -7,8 +7,13 @@ $id = $_POST['id'];
 $nombre_producto = $_POST["nombre"];
 $descripcion_producto = $_POST["descripcion"];
 
-if(isset($_FILES['image'])){
-    $imagen_producto = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+//if(isset($_FILES['image'])){
+  //  $imagen_producto = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+//}
+if (is_uploaded_file($_FILES["image"]["tmp_name"]))
+{
+    $imagen_producto =  file_get_contents($_FILES["image"]["tmp_name"]);
+    
 }
 
 $cantidad_producto = $_POST["cantidad"];

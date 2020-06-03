@@ -11,8 +11,14 @@ $tipo = $_POST['tipo'];
 $telefono = $_POST['telefono']; 
 $direccion = $_POST['direccion'];
 
-if(isset($_FILES['Imagen'])){
-    $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
+//if(isset($_FILES['Imagen'])){
+//    $imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
+//}
+
+if (is_uploaded_file($_FILES["Imagen"]["tmp_name"]))
+{
+    $imagen =  file_get_contents($_FILES["Imagen"]["tmp_name"]);
+    
 }
 
 $usuarios = leerUsuarios();
