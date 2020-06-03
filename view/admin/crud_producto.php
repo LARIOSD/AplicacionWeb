@@ -272,14 +272,13 @@ array_push($prod,procentaje($frutas,$total));
                                                             }
                                                         ?>
                                                 <td>
-                                                    <button href="" id="modificarProduct" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
+                                                    <button href="" id="modificarProduct" onclick="capId(<?php echo $aux['idproducts'];?>)" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </button>
                                                 </td>
-
                                                 <td>
                                                     <form action="../../controller/actions/producto/act_eliminarprod.php" method="POST">
-                                                        <input type="hidden" name="id" value="<?php echo $aux['idproducts']; ?>">
+                                                        <input type="hidden" name="id" value="<?php $aux['idproducts']; ?>">
                                                         <button id="eliminarProduct" type="submit" href="" class="btn btn-danger">
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
@@ -427,7 +426,7 @@ array_push($prod,procentaje($frutas,$total));
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                <input id="miid" type="text" name="id" value="" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                             </div>
 
                             <!--Nombre-->
@@ -550,6 +549,9 @@ array_push($prod,procentaje($frutas,$total));
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/sweetalert2.js"></script>
+    <script src="js/datosModPro.js"></script>
+
+    
 </body>
 
 </html>
