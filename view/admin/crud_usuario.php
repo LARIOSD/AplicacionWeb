@@ -88,16 +88,6 @@ if(isset($_GET['id'])){
                     <span>Productos</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="crud_graficas.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Graficas</span></a>
-            </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -328,7 +318,7 @@ if(isset($_GET['id'])){
     <!--Modificar Usuario modal-->
     <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form id="modificar" action="../../controller/actions/usuario/act_Moduser.php" method="POST">
+            <form id="modificar" action="../../controller/actions/usuario/act_Moduser.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>

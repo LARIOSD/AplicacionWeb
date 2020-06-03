@@ -88,15 +88,6 @@ if(isset($_GET['id'])){
                     <span>Productos</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item ">
-                <a class="nav-link" href="crud_graficas.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Graficas</span></a>
-            </li>
 
 
             <!-- Divider -->
@@ -180,7 +171,7 @@ array_push($prod,procentaje($frutas,$total));
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Grafica Circular</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafica de productos</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
