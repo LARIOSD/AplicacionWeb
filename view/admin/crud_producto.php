@@ -3,12 +3,12 @@ session_start();
 if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../store/index.php");
 } else if ($_SESSION['ID_TIPO'] != 1) {
-    header("Location:../login.php");
+    header("Location:../login/login.php");
 }
 
 
-require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
-require_once(__DIR__ . "/../../Model/entities/producto.php");
+require_once(__DIR__ . "/../../controller/mdb/mdbproducto.php");
+require_once(__DIR__ . "/../../model/entities/producto.php");
 $producto = leerProducto();
 
 
@@ -133,21 +133,41 @@ if(isset($_GET['id'])){
 <?php
 $lacteo = 0; $verduras = 0; $frutas = 0; $total = 0;
 $prod = array();
+$canLacteos = 0; $canVerduras = 0; $canFrutas = 0;
+$canProd = array();
 
 foreach ($producto as $aux) :
     $total += 1;    
     if( 1 == $aux['idtipoproducts']){
+
         $lacteo += 1;
+        $canLacteos += $aux['cantidad'];
+
     }elseif (2 == $aux['idtipoproducts'] ) {
+
         $verduras +=1;
+        $canVerduras += $aux['cantidad'];
+
     }else{
+        $canFrutas += $aux['cantidad'];
         $frutas += 1;
     }
 endforeach;
 
+$mayor = $canLacteos;
+if ($canVerduras > $mayor) {
+    $mayor = $canVerduras;
+}elseif ($canFrutas > $mayor ) {
+    $mayor = $canFrutas;
+}
+
 function procentaje($tipo,$total)
-{
-    $valorPorcentaje = ($tipo / $total)*100;
+{   
+    if ($total != 0) {
+        $valorPorcentaje = ($tipo / $total)*100;
+    }else {
+        $valorPorcentaje = 0;
+    }
 
     return $valorPorcentaje;
 }
@@ -155,12 +175,23 @@ function procentaje($tipo,$total)
 array_push($prod,procentaje($lacteo,$total));
 array_push($prod,procentaje($verduras,$total));
 array_push($prod,procentaje($frutas,$total));
+
+array_push($canProd,$canLacteos);
+array_push($canProd,$canVerduras);
+array_push($canProd,$canFrutas);
 ?>
 
-<div id='tipo_0' class='producto' data-producto='<?php echo $total ?>'> </div>
+<div id='tipo_0' class='producto'><?php echo $total ?> </div>
 <div id='tipo_1' class='producto' data-producto='<?php echo $prod[0]; ?>'> </div>
 <div id='tipo_2' class='producto' data-producto='<?php echo $prod[1]; ?>'> </div>
 <div id='tipo_3' class='producto' data-producto='<?php echo $prod[2]; ?>'> </div>
+
+<div id='tipo_4' class='producto'><?php echo $mayor ?> </div>
+<div id='tipo_5' class='producto' data-producto='<?php echo $canProd[0]; ?>'> </div>
+<div id='tipo_6' class='producto' data-producto='<?php echo $canProd[1]; ?>'> </div>
+<div id='tipo_7' class='producto' data-producto='<?php echo $canProd[2]; ?>'> </div>
+
+
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -199,7 +230,7 @@ array_push($prod,procentaje($frutas,$total));
                                         <canvas id="myBarChart"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
+                                    Cantidad existentes de productos por tipo
                                 </div>
                             </div>
                         
@@ -272,13 +303,14 @@ array_push($prod,procentaje($frutas,$total));
                                                             }
                                                         ?>
                                                 <td>
-                                                    <button href="" id="modificarProduct" onclick="capId(<?php echo $aux['idproducts'];?>)" type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
+                                                    <button href="" id="modificarProduct" onclick="capId(<?php echo $aux['idproducts'];?>)" 
+                                                    type="button" data-target="#modificar_producto" data-toggle="modal" class="btn btn-primary">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </button>
                                                 </td>
                                                 <td>
                                                     <form action="../../controller/actions/producto/act_eliminarprod.php" method="POST">
-                                                        <input type="hidden" name="id" value="<?php $aux['idproducts']; ?>">
+                                                        <input type="hidden" name="id" value="<?php echo $aux['idproducts']; ?>">
                                                         <button id="eliminarProduct" type="submit" href="" class="btn btn-danger">
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
@@ -426,7 +458,7 @@ array_push($prod,procentaje($frutas,$total));
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input id="miid" type="text" name="id" value="" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                <input id="id_mp" value="" type="text" name="id"  class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled>
                             </div>
 
                             <!--Nombre-->
@@ -510,7 +542,7 @@ array_push($prod,procentaje($frutas,$total));
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../../Controller/actions/login/act_logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../../controller/actions/login/act_logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -537,8 +569,8 @@ array_push($prod,procentaje($frutas,$total));
     <script src="js/demo/datatables-demo.js"></script>
 
     <!--vista Previa de imagenes-->
-    <script src="js/vista_image_crearUser.js"></script>
-    <script src="js/vista_image_modUser.js"></script>
+    <script src="js/vista_image_crear.js"></script>
+    <script src="js/vista_image_mod.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
@@ -549,7 +581,7 @@ array_push($prod,procentaje($frutas,$total));
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/sweetalert2.js"></script>
-    <script src="js/datosModPro.js"></script>
+    <script src="js/datosmod.js"></script>
 
     
 </body>

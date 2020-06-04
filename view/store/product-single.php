@@ -6,8 +6,8 @@ if ($_SESSION['ID_TIPO'] == 1) {
 	header("Location:../login/login.php");
 }
 
-require_once(__DIR__ . "/../../Controller/mdb/mdbProducto.php");
-require_once(__DIR__ . "/../../Model/entities/producto.php");
+require_once(__DIR__ . "/../../controller/mdb/mdbproducto.php");
+require_once(__DIR__ . "/../../model/entities/producto.php");
 
 $producto = leerProducto();
 ?>
@@ -101,7 +101,7 @@ $producto = leerProducto();
           <li class="nav-item cta cta-colored">
             <a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a>
           </li>
-          <li class="nav-item"><a href="../../Controller/actions/login/act_logout.php" class="nav-link"><i class="fas fa-sign-out-alt">logout</i></a></li>
+          <li class="nav-item"><a href="../../controller/actions/login/act_logout.php" class="nav-link"><i class="fas fa-sign-out-alt">logout</i></a></li>
         </ul>
       </div>
     </div>

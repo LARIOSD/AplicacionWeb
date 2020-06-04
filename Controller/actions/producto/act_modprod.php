@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once (__DIR__."/../../mdb/mdbProducto.php");
-require_once(__DIR__ . "/../../../Model/entities/Producto.php");
+require_once (__DIR__."/../../mdb/mdbproducto.php");
+require_once(__DIR__ . "/../../../model/entities/producto.php");
 
 $id = $_POST['id'];
 $nombre_producto = $_POST["nombre"];
@@ -28,7 +28,7 @@ $producto = new Producto(
         $cantidad_producto,
         $precio_producto,
         $estado_producto,
-        $idtipo_producto,
+        $idtipo_producto
 
     );
 

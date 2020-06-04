@@ -3,13 +3,12 @@ session_start();
 if ($_SESSION['ID_TIPO'] == 2) {
     header("Location:../store/index.php");
 } else if ($_SESSION['ID_TIPO'] != 1) {
-    header("Location:../login.php");
+    header("Location:../login/login.php");
 }
 
 
-require_once(__DIR__ . "/../../Controller/mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../Model/entities/Usuario.php");
-//require_once(__DIR__ . "/../../Model/dao/DataSource.php");
+require_once(__DIR__ . "/../../controller/mdb/mdbusuario.php");
+require_once(__DIR__ . "/../../model/entities/usuario.php");
 
 $usuario = leerUsuarios();
 
@@ -33,7 +32,7 @@ if(isset($_GET['id'])){
     <meta name="author" content="">
 
     <title>Administrador - Usuarios</title>
-    <!-- http://localhost/AplicacionWeb/view/admin/crud_usuario.php -->
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -181,12 +180,12 @@ if(isset($_GET['id'])){
                                                         ?> 
                                                 </td>
                                                 <td>
-                                                    <button href="" id="modificarUser" pasarId="<?php echo $aux['id']; ?>" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
+                                                    <button href="" id="modificarUser" onclick="capIdusuario(<?php echo $aux['id'];?>)" type="button" data-target="#modificar_usuario" data-toggle="modal" class="btn btn-primary">
                                                         <i class="fas fa-user-edit"></i>
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <form action="../../controller/actions/usuario/act_Elimuser.php" method="POST">
+                                                    <form action="../../controller/actions/usuario/act_elimuser.php" method="POST">
                                                         <input type="hidden" name="id" value="<?php echo $aux['id']; ?>">
                                                         <button id="eliminarUser" type="submit" href="" class="btn btn-danger">
                                                             <i class="fas fa-user-minus"></i>
@@ -318,7 +317,7 @@ if(isset($_GET['id'])){
     <!--Modificar Usuario modal-->
     <div class="modal fade" id="modificar_usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form id="modificar" action="../../controller/actions/usuario/act_Moduser.php" method="POST" enctype="multipart/form-data">
+            <form id="modificar" action="../../controller/actions/usuario/act_moduser.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Modificar Usuario</h4>
@@ -334,7 +333,7 @@ if(isset($_GET['id'])){
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                <input id="id_mu" value="" type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled>
                             </div>
 
                             <!--Nombre-->
@@ -424,7 +423,7 @@ if(isset($_GET['id'])){
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../../Controller/actions/login/act_logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../../controller/actions/login/act_logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -453,10 +452,13 @@ if(isset($_GET['id'])){
     <!--SweetAlert2-->
 
     <!--vista Previa de imagenes-->
-    <script src="js/vista_image_crearUser.js"></script>
-    <script src="js/vista_image_modUser.js"></script>
+    <script src="js/vista_image_crear.js"></script>
+    <script src="js/vista_image_mod.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/sweetalert.js"></script>
+    
+    <!--pasar el id al modal-->
+    <script src="js/datosmod.js"></script>
 </body>
 
 </html>

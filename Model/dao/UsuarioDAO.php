@@ -1,7 +1,7 @@
 <?php
 
-require_once("DataSource.php");
-require_once(__DIR__ . "/../entities/Usuario.php");
+require_once("datasource.php");
+require_once(__DIR__ . "/../entities/usuario.php");
 
 class UsuarioDAO
 {
@@ -25,7 +25,7 @@ class UsuarioDAO
                     $data_table[$indice]["imagen"],
                     $data_table[$indice]["tipo"],
                     $data_table[$indice]["telefono"],
-                    $data_table[$indice]["direccion"],
+                    $data_table[$indice]["direccion"]
                 );
             }
             return $usuario;
@@ -53,7 +53,7 @@ class UsuarioDAO
                     $data_table[$indice]["imagen"],
                     $data_table[$indice]["tipo"],
                     $data_table[$indice]["telefono"],
-                    $data_table[$indice]["direccion"],
+                    $data_table[$indice]["direccion"]
                 );
             }
             return $usuario;
@@ -77,7 +77,7 @@ class UsuarioDAO
                 $data_table[$indice]["imagen"],
                 $data_table[$indice]["tipo"],
                 $data_table[$indice]["telefono"],
-                $data_table[$indice]["direccion"],
+                $data_table[$indice]["direccion"]
             );
             array_push($usuarios, $usuario);
         }
@@ -138,4 +138,3 @@ class UsuarioDAO
         return $resultado;
     }
 }
-    

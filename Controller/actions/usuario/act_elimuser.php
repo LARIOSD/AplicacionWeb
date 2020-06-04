@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."/../../mdb/mdbUsuario.php");
+require_once (__DIR__."/../../mdb/mdbusuario.php");
 
 $id = $_POST['id'];
 

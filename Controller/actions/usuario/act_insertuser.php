@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once (__DIR__."/../../mdb/mdbUsuario.php");
-require_once(__DIR__ . "/../../../Model/entities/Usuario.php");
+require_once (__DIR__."/../../mdb/mdbusuario.php");
+require_once(__DIR__ . "/../../../model/entities/usuario.php");
 
 $nombre = $_POST['nombre'];
 $username = $_POST['correo'];

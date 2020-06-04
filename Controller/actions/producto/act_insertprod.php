@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once (__DIR__."/../../mdb/mdbProducto.php");
-require_once(__DIR__ . "/../../../Model/entities/Producto.php");
+require_once (__DIR__."/../../mdb/mdbproducto.php");
+require_once(__DIR__ . "/../../../model/entities/producto.php");
 
 $nombre_producto = $_POST["nombre"];
 $descripcion_producto = $_POST["descripcion"];

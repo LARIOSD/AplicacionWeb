@@ -1,7 +1,7 @@
 <?php
 
-require_once("DataSource.php");
-require_once(__DIR__ . "/../entities/Producto.php");
+require_once("datasource.php");
+require_once(__DIR__ . "/../entities/producto.php");
 
 class ProductoDAO
 {
@@ -24,7 +24,7 @@ class ProductoDAO
                     $data_table[$indice]["cantidad"],
                     $data_table[$indice]["precio"],
                     $data_table[$indice]["estado"],
-                    $data_table[$indice]["idtipoproducts"],
+                    $data_table[$indice]["idtipoproducts"]
                 );
             }
             return $producto;
@@ -48,7 +48,7 @@ class ProductoDAO
                 $data_table[$indice]["cantidad"],
                 $data_table[$indice]["precio"],
                 $data_table[$indice]["estado"],
-                $data_table[$indice]["idtipoproducts"],
+                $data_table[$indice]["idtipoproducts"]
             );
             array_push($productos, $producto);
         }
@@ -69,7 +69,7 @@ class ProductoDAO
                 ':cantidad' => $producto->getCantidad_producto(),
                 ':precio' => $producto->getPrecio_producto(),
                 ':estado' => $producto->getEstado_producto(),
-                ':idtipoproducts' => $producto->getIdtipo_producto(),
+                ':idtipoproducts' => $producto->getIdtipo_producto()
 
             )
         );
@@ -94,7 +94,7 @@ class ProductoDAO
                 ':cantidad' => $producto->getCantidad_producto(),
                 ':precio' => $producto->getPrecio_producto(),
                 ':estado' => $producto->getEstado_producto(),
-                ':idtipoproducts' => $producto->getIdtipo_producto(),
+                ':idtipoproducts' => $producto->getIdtipo_producto()
             )
         );
 

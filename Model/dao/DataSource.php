@@ -12,7 +12,7 @@ class DataSource
     public function __construct()
     {
         try {
-            $config = fopen(__DIR__ . "/../../Config/config.json", "r");
+            $config = fopen(__DIR__ . "/../../config/config.json", "r");
             if (!$config) {
                 die("Cannot open configuration file!");
             }

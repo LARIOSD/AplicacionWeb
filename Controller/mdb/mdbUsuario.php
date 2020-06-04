@@ -2,7 +2,7 @@
 
 function buscarUsuarioPorId($id)
 {
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $usuario = $dao->buscarUsuarioPorId($id);
     return $usuario;
@@ -10,7 +10,7 @@ function buscarUsuarioPorId($id)
 
 function autenticarUsuario($correo, $password)
 {
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $usuario = $dao->autenticarUsuario($correo, $password);
     return $usuario;
@@ -18,7 +18,7 @@ function autenticarUsuario($correo, $password)
 
 function insertarUsuario($usuario)
 {
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $resultado = $dao->insertarUsuario($usuario);
     return $resultado;
@@ -26,7 +26,7 @@ function insertarUsuario($usuario)
 
 function modificarUsuario($usuario,$id)
 {
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $resultado = $dao->modificarUsuario($usuario,$id);
     return $resultado;
@@ -34,14 +34,14 @@ function modificarUsuario($usuario,$id)
 
 function borrarUsuario($id)
 {
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $resultado = $dao->borrarUsuario($id);
     return $resultado;
 }
 
 function leerUsuarios(){
-    require_once(__DIR__ . "/../../model/dao/UsuarioDAO.php");
+    require_once(__DIR__ . "/../../model/dao/usuariodao.php");
     $dao = new UsuarioDAO();
     $resultado = $dao->leerUsuarios();
     return $resultado;
