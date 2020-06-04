@@ -34,7 +34,6 @@ $respuesta = modificarUsuario($usuario,$id);
 if($respuesta!=null){
     header("Location:../../../view/admin/crud_usuario.php?id=4"); // ENVIAR AL HOMEPAGES DEL USUARIO
 }else{
-    echo("Usuario no modificado");
     header("Location:../../../view/admin/crud_usuario.php?id=5"); //ENVIAR AL LOGIN NUEVAMENTE
 }
 

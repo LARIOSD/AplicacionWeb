@@ -4,7 +4,7 @@ var id = $('#val').data('estado');
 if(id == 0){
   swal({
     icon: "success",
-    title: "Bien echo",
+    title: "Bien hecho",
     text: "Se elimino el usuario exitosamente",
   });
 }else if(id==1){

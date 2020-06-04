@@ -188,7 +188,8 @@ array_push($canProd,$canFrutas);
 <div id='tipo_2' class='producto' data-producto='<?php echo $prod[1]; ?>'> </div>
 <div id='tipo_3' class='producto' data-producto='<?php echo $prod[2]; ?>'> </div>
 
-<div id='tipo_4' class='producto'><?php echo $mayor ?> </div>
+<div id='tipo_4' class='producto' ><?php echo $mayor ?> </div>
+
 <div id='tipo_5' class='producto' data-producto='<?php echo $canProd[0]; ?>'> </div>
 <div id='tipo_6' class='producto' data-producto='<?php echo $canProd[1]; ?>'> </div>
 <div id='tipo_7' class='producto' data-producto='<?php echo $canProd[2]; ?>'> </div>
@@ -212,7 +213,7 @@ array_push($canProd,$canFrutas);
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <hr>
-                                    Porcentaje de productos existentes por tipo.
+                                    Porcentaje de agregados por tipo.
                                     <br>
                                     Frutas, Lacteos y Verduras.
                                 </div>
@@ -460,7 +461,7 @@ array_push($canProd,$canFrutas);
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input id="id_mp" value="" type="text" name="id"  class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled>
+                                <input id="id_mp" value="" type="text" name="id"  class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
                             </div>
 
                             <!--Nombre-->

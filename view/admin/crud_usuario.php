@@ -335,7 +335,7 @@ if(isset($_GET['id'])){
                                 <span class="icon text-white-50">
                                     <i class="fas fa-fingerprint"></i>
                                 </span>
-                                <input id="id_mu" value="" type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled>
+                                <input id="id_mu" value="" type="text" name="id" class="form-control validate" placeholder="ID" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
                             </div>
 
                             <!--Nombre-->

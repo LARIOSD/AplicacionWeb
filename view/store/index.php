@@ -58,7 +58,7 @@ $producto = leerProducto();
 						</div>
 						<div class="col-md pr-4 d-flex topper align-items-center">
 							<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-							<span class="text">frutasfrescar@gmail.com</span>
+							<span class="text"><?php echo $_SESSION['NOMBRE_USUARIO'];?></span>
 						</div>
 						<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
 							<span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -245,7 +245,7 @@ $producto = leerProducto();
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
 						<a href="#" class="img-prod">
-							<img class="img-fluid" src="data:image/jpg;base64<?php echo base64_encode($productos['image']); ?>" alt="Colorlib Template">
+							<img class="img-fluid" src="data:image/jpg;base64,<?php echo base64_encode($productos['image']); ?>" alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">

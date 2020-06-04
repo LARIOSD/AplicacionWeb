@@ -2,7 +2,7 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-var prod_1 = $('#tipo_4').data('producto');
+//var prod_1 = $('#tipo_4').data('producto');
 var prod_2 = $('#tipo_5').data('producto');
 var prod_3 = $('#tipo_6').data('producto');
 var prod_4 = $('#tipo_7').data('producto');
@@ -74,7 +74,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: prod_1,
+          max: 6000,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
