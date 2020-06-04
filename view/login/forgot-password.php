@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <link rel="icon" type="image/png" href="../admin/img/fruit.png" />
+
 
 </head>
 

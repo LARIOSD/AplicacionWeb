@@ -46,6 +46,8 @@ if(isset($_GET['id'])){
     <!-- Modificaciones adicionales-->
     <link href="css/style_producto.css" rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="img/fruit.png" />
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="js/sweetalert.js"></script>
 
